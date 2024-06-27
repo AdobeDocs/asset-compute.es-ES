@@ -8,19 +8,19 @@ feature: Asset Compute Microservices
 user-guide-title: Guía del servicio de asset compute
 user-guide-description: Esta documentación cubre [!DNL Asset Compute Service] tareas como desarrollar, administrar, implementar y solucionar problemas del código personalizado.
 breadcrumb-title: Guía del servicio de asset compute
-source-git-commit: 06016be9b813c28c502f5bd5df87fd42a211e7ac
+source-git-commit: c6f747ebd6d1b17834f1af0837609a148804f8a9
 workflow-type: tm+mt
-source-wordcount: '96'
-ht-degree: 16%
+source-wordcount: '86'
+ht-degree: 12%
 
 ---
 
 
-# Guía del usuario de Asset compute Service {#using}
+# Guía del usuario del servicio de asset compute {#using}
 
 + [Guía del usuario del servicio de asset compute](home.md)
 + [Información general](introduction.md)
-+ [Formatos de archivo compatibles](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/assets/file-format-support.html)
++ [Formatos de archivo compatibles](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support)
 + [Arquitectura](architecture.md)
 + [Referencias de API](api.md)
 + Ampliar servicio de Asset compute {#extend}
@@ -30,6 +30,6 @@ ht-degree: 16%
    + [Desarrollar una aplicación personalizada](develop-custom-application.md)
    + [Prueba de una aplicación personalizada](test-custom-application.md)
    + [Implementación de una aplicación personalizada](deploy-custom-application.md)
-   + [Integración y uso en [!DNL Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/assets/asset-microservices-overview.html?lang=es)
+   + [Integración y uso en [!DNL Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/asset-microservices-overview)
 + [Solución de problemas](troubleshooting.md)
-+ [Contribución al proyecto de código abierto](contribute-to-compute-service.md)
++ [Contribute al proyecto de código abierto](contribute-to-compute-service.md)

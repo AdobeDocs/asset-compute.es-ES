@@ -2,9 +2,9 @@
 title: Prueba y depuración [!DNL Asset Compute Service] aplicación personalizada
 description: Prueba y depuración [!DNL Asset Compute Service] aplicación personalizada.
 exl-id: c2534904-0a07-465e-acea-3cb578d3bc08
-source-git-commit: 5257e091730f3672c46dfbe45c3e697a6555e6b1
+source-git-commit: c6f747ebd6d1b17834f1af0837609a148804f8a9
 workflow-type: tm+mt
-source-wordcount: '812'
+source-wordcount: '775'
 ht-degree: 0%
 
 ---
@@ -25,17 +25,17 @@ To run tests for a custom application, run `aio asset-compute test-worker` comma
 Document interactively running `adobe-asset-compute` commands `test-worker` and `run-worker`.
 -->
 
-Esto ejecuta un marco de pruebas unitarias personalizado para las acciones de la aplicación de Asset compute en el proyecto como se describe a continuación. Se conecta a través de una configuración en la `package.json` archivo. También es posible tener pruebas unitarias de JavaScript como Jest. `aio app test` ejecuta ambos.
+Este comando ejecuta un marco de prueba unitario personalizado para las acciones de la aplicación de Asset compute en el proyecto como se describe a continuación. Se conecta a través de una configuración en la `package.json` archivo. También es posible tener pruebas unitarias de JavaScript como Jest. El `aio app test` ejecuta ambas.
 
-El [aio-cli-plugin-asset-compute](https://github.com/adobe/aio-cli-plugin-asset-compute#install-as-local-devdependency) El complemento está incrustado como dependencia de desarrollo en la aplicación de aplicación personalizada, por lo que no es necesario instalarlo en los sistemas de compilación/prueba.
+El [aio-cli-plugin-asset-compute](https://github.com/adobe/aio-cli-plugin-asset-compute#install-as-local-devdependency) El complemento está incrustado como una dependencia de desarrollo en la aplicación de aplicación personalizada, por lo que no es necesario instalarlo en los sistemas de compilación/prueba.
 
 ### Marco de prueba unitario de aplicación {#unit-test-framework}
 
-El marco de pruebas de la unidad de aplicación de Asset compute permite probar aplicaciones sin escribir ningún código. Se basa en el principio del archivo de origen a representación de las aplicaciones. Se debe configurar una estructura de archivos y carpetas determinada para definir casos de prueba con archivos de origen de prueba, parámetros opcionales, representaciones esperadas y scripts de validación personalizados. De forma predeterminada, las representaciones se comparan para la igualdad de bytes. Además, los servicios HTTP externos se pueden burlar fácilmente mediante archivos JSON simples.
+El marco de pruebas unitarias de la aplicación de Asset compute permite probar aplicaciones sin escribir código. Se basa en el principio del archivo de origen a representación de las aplicaciones. Se debe configurar una estructura de archivos y carpetas determinada para definir casos de prueba con archivos de origen de prueba, parámetros opcionales, representaciones esperadas y scripts de validación personalizados. De forma predeterminada, las representaciones se comparan para la igualdad de bytes. Además, los servicios HTTP externos se pueden burlar fácilmente mediante archivos JSON simples.
 
 ### Agregar pruebas {#add-tests}
 
-Se esperan pruebas dentro del `test` en el nivel raíz de la carpeta [!DNL Adobe I/O] proyecto. Los casos de prueba para cada aplicación deben estar en la ruta `test/asset-compute/<worker-name>`, con una carpeta para cada caso de prueba:
+Se esperan pruebas dentro del `test` en el nivel raíz del proyecto. Los casos de prueba para cada aplicación deben estar en la ruta `test/asset-compute/<worker-name>`, con una carpeta para cada caso de prueba:
 
 ```yaml
 action/
@@ -66,11 +66,11 @@ Eche un vistazo a [aplicaciones personalizadas de ejemplo](https://github.com/ad
 
 ### Resultado de prueba {#test-output}
 
-Los resultados detallados de la prueba, incluidos los registros de la aplicación personalizada, están disponibles en la `build` carpeta en la raíz de la aplicación App Builder de Adobe Developer, como se muestra en la `aio app test` salida.
+El `build` en la raíz de la aplicación de Adobe Developer App Builder se encuentran los resultados detallados de las pruebas y los registros de la aplicación personalizada. Estos detalles también se muestran en la salida del `aio app test` comando.
 
 ### Burlar servicios externos {#mock-external-services}
 
-Es posible burlar las llamadas de servicio externas en sus acciones definiendo `mock-<HOST_NAME>.json` archivos en los casos de prueba, donde NOMBRE_HOST es el host del que desea burlarse. Un ejemplo de caso de uso es una aplicación que realiza una llamada independiente a S3. La nueva estructura de prueba tendría este aspecto:
+Puede simular llamadas de servicio externas dentro de sus acciones creando lo siguiente `mock-<HOST_NAME>.json` archivos para los escenarios de prueba, siendo HOST_NAME el host específico que desea imitar. Un ejemplo de caso de uso es una aplicación que realiza una llamada independiente a S3. La nueva estructura de prueba tendría este aspecto:
 
 ```json
 test/
@@ -105,7 +105,7 @@ El ejemplo `worker-animal-pictures` contiene un [archivo ficticio](https://githu
 
 #### Uso compartido de archivos entre casos de prueba {#share-files-across-test-cases}
 
-Se recomienda utilizar enlaces simbólicos relativos si comparte `file.*`, `params.json` o `validate` scripts en varias pruebas. Son compatibles con Git. Asegúrese de asignar un nombre único a los archivos compartidos, ya que es posible que tenga otros distintos. En el ejemplo siguiente, las pruebas mezclan y hacen coincidir algunos archivos compartidos, y los suyos propios:
+Adobe recomienda utilizar enlaces simbólicos relativos si comparte `file.*`, `params.json` o `validate` scripts en varias pruebas. Son compatibles con Git. Asegúrese de asignar un nombre único a los archivos compartidos, ya que es posible que tenga otros distintos. En el ejemplo siguiente, las pruebas mezclan y hacen coincidir algunos archivos compartidos, y los suyos propios:
 
 ```json
 tests/
@@ -158,13 +158,13 @@ Archivo de parámetros con motivo del error:
 }
 ```
 
-Ver lista completa y descripción de [razones de error de asset compute](https://github.com/adobe/asset-compute-commons#error-reasons).
+Ver una lista y una descripción completas de [razones de error de asset compute](https://github.com/adobe/asset-compute-commons#error-reasons).
 
 ## Depuración de una aplicación personalizada {#debug-custom-worker}
 
 Los pasos siguientes muestran cómo se puede depurar una aplicación personalizada mediante Visual Studio Code. Permite ver registros en directo, puntos de interrupción de visitas y paso a paso por el código, así como la recarga en directo de los cambios del código local en cada activación.
 
-Muchos de estos pasos suelen automatizarse mediante `aio` de serie, consulte la sección Depuración de la aplicación en la [Documentación del Generador de aplicaciones Adobe Developer](https://developer.adobe.com/app-builder/docs/getting_started/first_app). Por ahora, los pasos siguientes incluyen una solución.
+El `aio` de forma predeterminada automatiza muchos de estos pasos. Vaya a la sección Depuración de la aplicación en [Documentación de Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/getting_started/first_app). Por ahora, los pasos siguientes incluyen una solución.
 
 1. Instale la última versión [wskdebug](https://github.com/apache/openwhisk-wskdebug) desde GitHub y la [ngrok](https://www.npmjs.com/package/ngrok).
 
@@ -173,11 +173,11 @@ Muchos de estos pasos suelen automatizarse mediante `aio` de serie, consulte la 
    npm install -g ngrok --unsafe-perm=true
    ```
 
-1. Añada a su archivo JSON de configuración de usuario. Sigue utilizando el antiguo depurador de código VS, el nuevo tiene [algunos problemas](https://github.com/apache/openwhisk-wskdebug/issues/74) con wskdebug: `"debug.javascript.usePreview": false`.
+1. Añada a la configuración de usuario el archivo JSON. Sigue utilizando el depurador de código antiguo de Visual Studio. El nuevo tiene [algunos problemas](https://github.com/apache/openwhisk-wskdebug/issues/74) con wskdebug: `"debug.javascript.usePreview": false`.
 1. Cierre todas las instancias de aplicaciones abiertas mediante `aio app run`.
 1. Implemente el código más reciente utilizando `aio app deploy`.
-1. Ejecutar solo el Devtool de Asset compute mediante `aio asset-compute devtool`. Manténgalo abierto.
-1. En el Editor de código de VS, agregue la siguiente configuración de depuración a su `launch.json`:
+1. Ejecute solo la Asset compute Devtool mediante `aio asset-compute devtool`. Manténgalo abierto.
+1. En el Editor de código de Visual Studio, agregue la siguiente configuración de depuración a su `launch.json`:
 
    ```json
    {
@@ -202,9 +202,9 @@ Muchos de estos pasos suelen automatizarse mediante `aio` de serie, consulte la 
 
 1. Seleccionar `wskdebug worker` en la configuración ejecutar/depurar y pulse el icono reproducir. Espere a que se inicie hasta que se muestre **[!UICONTROL Listo para activaciones]** en el **[!UICONTROL Consola de depuración]** ventana.
 
-1. Clic **[!UICONTROL correr]** en el Devtool. Puede ver las acciones que se ejecutan en el editor de código VS y los registros comienzan a mostrarse.
+1. Clic **[!UICONTROL correr]** en el Devtool. Puede ver las acciones que se ejecutan en el editor de código de Visual Studio y los registros comienzan a mostrarse.
 
-1. Establezca un punto de interrupción en el código, vuelva a ejecutar y debería llegar a.
+1. Establezca un punto de interrupción en su código. Entonces corre de nuevo y debería golpear.
 
 Los cambios de código se cargan en tiempo real y son efectivos en cuanto se produce la siguiente activación.
 

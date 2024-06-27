@@ -1,7 +1,7 @@
 ---
-source-git-commit: 7f59571ebe0d065c4e11cda52718a0febd71b62b
+source-git-commit: c6f747ebd6d1b17834f1af0837609a148804f8a9
 workflow-type: tm+mt
-source-wordcount: '170'
+source-wordcount: '177'
 ht-degree: 100%
 
 ---
@@ -9,20 +9,8 @@ ht-degree: 100%
 
 © Copyright 2021 Adobe. All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the &quot;Software&quot;), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Esta licencia concede permiso, de forma gratuita, a cualquier persona que obtenga una copia de este software y de los archivos de documentación asociados (el “Software”), para utilizarlo sin restricciones. Esta licencia incluye, entre otros, los derechos para utilizar, copiar, editar, combinar, publicar, distribuir, sublicenciar o vender copias del software. Y, para permitir que las personas a las que se proporcione el Software lo hagan, sujeto a las siguientes condiciones:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+El aviso de copyright anterior y este aviso de permiso se incluirán en todas las copias o partes sustanciales del software.
 
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+EL SOFTWARE SE PROPORCIONA “TAL CUAL”, SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O IMPLÍCITA. INCLUYE, ENTRE OTRAS, LAS GARANTÍAS DE COMERCIABILIDAD, IDONEIDAD PARA UN FIN DETERMINADO Y AUSENCIA DE INFRACCIÓN. EN NINGÚN CASO LOS AUTORES NI LOS TITULARES DE LOS DERECHOS DE AUTOR SERÁN RESPONSABLES DE NINGUNA RECLAMACIÓN, DAÑO U OTRA RESPONSABILIDAD. YA SEA EN UNA ACCIÓN CONTRACTUAL, POR NEGLIGENCIA O DE OTRO TIPO, QUE SURJA DEL SOFTWARE, ESTÉ RELACIONADA CON ÉL O SE PRODUZCA EN RELACIÓN CON ÉL O EL USO U OTRAS OPERACIONES EN EL SOFTWARE.

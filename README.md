@@ -1,17 +1,16 @@
 ---
-source-git-commit: 1a300e1c83d5ab3508cb762149167029eb73ed2c
+source-git-commit: c6f747ebd6d1b17834f1af0837609a148804f8a9
 workflow-type: tm+mt
-translation-type: tm+mt
-source-wordcount: '69'
-ht-degree: 0%
+source-wordcount: '68'
+ht-degree: 83%
 
 ---
-# Documentación del servicio de Asset compute de Adobe
+# Documentación del servicio de Asset compute de Adobes
 
-Es el repositorio de documentación de [!DNL Adobe Asset Compute Service].
+Este repositorio de documentación es para [!DNL Adobe Asset Compute Service].
 
-Sus contribuciones a la documentación son bienvenidas. Consulte los siguientes recursos:
+Las contribuciones a la documentación son bienvenidas. Consulte los siguientes recursos:
 
-* [contribute.](contributing.md) mdPara obtener una descripción general de cómo contribuir a la documentación.
-* [Guidelines.](guidelines.md) mdPara obtener una descripción general de lo que se espera en las contribuciones y cómo componer las contribuciones de documentación.
-* [código de conducta.](code-of-conduct.md) mdPara obtener una visión general de los estándares de comportamiento que esperamos que se apliquen al contribuir a este proyecto de documentación.
+* [contributing.md](contributing.md) Para obtener una descripción general de cómo contribuir a la documentación.
+* [guidelines.md](guidelines.md) Para obtener una descripción general de lo que se espera en las contribuciones y cómo componer las contribuciones de documentación.
+* [code-of-conduct.md](code-of-conduct.md) Para obtener una descripción general de los estándares de comportamiento que Adobe espera que se apliquen al contribuir en este proyecto de documentación.
