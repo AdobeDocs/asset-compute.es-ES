@@ -1,6 +1,6 @@
 ---
-title: Arquitectura de [!DNL Asset Compute Service]
-description: Cómo [!DNL Asset Compute Service] La API, las aplicaciones y el SDK trabajan juntos para proporcionar un servicio de procesamiento de recursos nativo de la nube.
+title: Arquitectura de  [!DNL Asset Compute Service]
+description: Cómo la API, las aplicaciones y el SDK de  [!DNL Asset Compute Service] trabajan juntos para proporcionar un servicio de procesamiento de recursos nativo de la nube.
 exl-id: 658ee4b7-5eb1-4109-b263-1b7d705e49d6
 source-git-commit: f15b9819d3319d22deccdf7e39c0f72728baaa39
 workflow-type: tm+mt
@@ -11,17 +11,17 @@ ht-degree: 0%
 
 # Arquitectura de [!DNL Asset Compute Service] {#overview}
 
-El [!DNL Asset Compute Service] se basa en el Adobe sin servidor [!DNL `I/O Runtime`] plataforma. Proporciona compatibilidad con servicios de contenido de Adobe Sensei para recursos. El cliente que invoca (solo [!DNL Experience Manager] as a [!DNL Cloud Service] es compatible) se proporciona con la información generada por Adobe Sensei que buscó para el recurso. La información devuelta está en formato JSON.
+[!DNL Asset Compute Service] se ha creado sobre la plataforma de Adobe sin servidor [!DNL `I/O Runtime`]. Proporciona compatibilidad con servicios de contenido de Adobe Sensei para recursos. El cliente que realiza la invocación (solo se admite [!DNL Experience Manager] como [!DNL Cloud Service]) se proporciona con la información generada por Adobe Sensei que buscó para el recurso. La información devuelta está en formato JSON.
 
-[!DNL Asset Compute Service] se puede ampliar creando aplicaciones personalizadas basadas en [!DNL Adobe Developer App Builder]. Estas aplicaciones personalizadas son [!DNL Project Adobe Developer App Builder] Las aplicaciones sin encabezado y realizan tareas como agregar herramientas de conversión personalizadas o llamar a API externas para realizar operaciones de imagen.
+[!DNL Asset Compute Service] se puede ampliar creando aplicaciones personalizadas basadas en [!DNL Adobe Developer App Builder]. Estas aplicaciones personalizadas son [!DNL Project Adobe Developer App Builder] aplicaciones sin encabezado y realizan tareas como agregar herramientas de conversión personalizadas o llamar a API externas para realizar operaciones de imagen.
 
-[!DNL Project Adobe Developer App Builder] es un módulo para crear e implementar aplicaciones web personalizadas en el Adobe [!DNL `I/O Runtime`]. Para crear aplicaciones personalizadas, los desarrolladores pueden aprovechar [!DNL React Spectrum] (Kit de herramientas de IU de Adobe), cree microservicios, cree eventos personalizados y organice API. Consulte [documentación de Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/overview).
+[!DNL Project Adobe Developer App Builder] es un módulo para generar e implementar aplicaciones web personalizadas en el Adobe [!DNL `I/O Runtime`]. Para crear aplicaciones personalizadas, los desarrolladores pueden aprovechar [!DNL React Spectrum] (kit de herramientas de IU de Adobe), crear microservicios, crear eventos personalizados y organizar API. Ver [documentación de Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/overview).
 
 La base sobre la que se basa la arquitectura incluye lo siguiente:
 
 * La modularidad de las aplicaciones (que solo contienen lo necesario para una tarea determinada) permite desacoplar las aplicaciones entre sí y mantenerlas ligeras.
 
-* El concepto sin servidor de [!DNL Adobe I/O] El tiempo de ejecución ofrece numerosas ventajas: procesamiento asincrónico, altamente escalable, aislado y basado en trabajos, que es perfecto para el procesamiento de recursos.
+* El concepto sin servidor de [!DNL Adobe I/O] Runtime ofrece numerosas ventajas: procesamiento asincrónico, altamente escalable, aislado y basado en trabajos, que es perfecto para el procesamiento de recursos.
 
 * El almacenamiento en la nube binaria proporciona las funciones necesarias para almacenar y acceder a los archivos y representaciones de recursos de forma individual, sin requerir permisos de acceso completos al almacenamiento, mediante referencias de URL firmadas previamente. La aceleración de la transferencia, el almacenamiento en caché de CDN y la co-ubicación de aplicaciones informáticas con almacenamiento en la nube permiten un acceso óptimo a contenido de baja latencia. Se admiten las nubes de AWS y Azure.
 
@@ -31,11 +31,11 @@ La base sobre la que se basa la arquitectura incluye lo siguiente:
 
 La arquitectura consta de las siguientes partes:
 
-* **Una capa de API y orquestación** recibe solicitudes (en formato JSON) que indican al servicio que transforme un recurso de origen en varias representaciones. Las solicitudes son asíncronas y se devuelven con un ID de activación que es el ID del trabajo. Las instrucciones son puramente declarativas y, para todo el trabajo de procesamiento estándar (por ejemplo, la generación de miniaturas, la extracción de texto), los consumidores solo especifican el resultado deseado, pero no las aplicaciones que administran determinadas representaciones. Las funciones de API genéricas, como autenticación, análisis y limitación de velocidad, se gestionan mediante la puerta de enlace de API de Adobe delante del servicio y administran todas las solicitudes que se dirigen a [!DNL Adobe I/O] Runtime. El enrutamiento de la aplicación se realiza dinámicamente mediante la capa de orquestación. Los clientes definen aplicaciones personalizadas para representaciones particulares, que vienen con su propio conjunto de parámetros únicos. La ejecución de aplicaciones se puede paralelizar completamente, ya que son funciones independientes sin servidor en el Adobe [!DNL `I/O Runtime`].
+* **Una API y una capa de orquestación** reciben solicitudes (en formato JSON) que indican al servicio que transforme un recurso de origen en varias representaciones. Las solicitudes son asíncronas y se devuelven con un ID de activación que es el ID del trabajo. Las instrucciones son puramente declarativas y, para todo el trabajo de procesamiento estándar (por ejemplo, la generación de miniaturas, la extracción de texto), los consumidores solo especifican el resultado deseado, pero no las aplicaciones que administran determinadas representaciones. Las características genéricas de API, como autenticación, análisis y limitación de velocidad, se administran mediante la puerta de enlace de API de Adobe delante del servicio y administran todas las solicitudes que se dirigen al tiempo de ejecución de [!DNL Adobe I/O]. El enrutamiento de la aplicación se realiza dinámicamente mediante la capa de orquestación. Los clientes definen aplicaciones personalizadas para representaciones particulares, que vienen con su propio conjunto de parámetros únicos. La ejecución de la aplicación se puede paralelizar completamente porque son funciones independientes sin servidor en el Adobe [!DNL `I/O Runtime`].
 
 * **Aplicaciones para procesar recursos** que se especializan en ciertos tipos de formatos de archivo o representaciones de destino. Conceptualmente, una aplicación es como el concepto de canalización UNIX®: un archivo de entrada se transforma en uno o más archivos de salida.
 
-* **A [biblioteca común de aplicaciones](https://github.com/adobe/asset-compute-sdk)** controla tareas comunes. Por ejemplo, descargar el archivo de origen, cargar las representaciones, crear informes de errores, enviar eventos y supervisar. Este diseño garantiza que el desarrollo de aplicaciones se mantenga sencillo, respetando el concepto sin servidor, con interacciones limitadas al sistema de archivos local.
+* **Una [biblioteca de aplicaciones comunes](https://github.com/adobe/asset-compute-sdk)** administra tareas comunes. Por ejemplo, descargar el archivo de origen, cargar las representaciones, crear informes de errores, enviar eventos y supervisar. Este diseño garantiza que el desarrollo de aplicaciones se mantenga sencillo, respetando el concepto sin servidor, con interacciones limitadas al sistema de archivos local.
 
 <!-- TBD:
 
