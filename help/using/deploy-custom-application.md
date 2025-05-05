@@ -15,7 +15,7 @@ Para implementar su aplicación, use el comando [aio app deploy](https://github.
 
 Para obtener la misma dirección URL sin volver a implementar la aplicación, use el comando [`aio app get-url`](https://github.com/adobe/aio-cli#aio-app-get-url-action).
 
-Use la dirección URL de un [perfil de procesamiento en [!DNL Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use) para integrar su aplicación con [!DNL Experience Manager] as a [!DNL Cloud Service].
+Use la dirección URL de un [perfil de procesamiento en [!DNL Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use) para integrar su aplicación con [!DNL Experience Manager] as a [!DNL Cloud Service].
 
 Asegúrese de que el proyecto de App Builder y el área de trabajo se correspondan con el entorno [!DNL Experience Manager] as a [!DNL Cloud Service] en el que desea usar la acción. Tiene diferentes entornos para el desarrollo, el ensayo y la producción. Puede comprobar el entorno comprobando las credenciales de `AIO_runtime_*` definidas dentro del archivo ENV en la raíz de la aplicación de Adobe Developer App Builder. Por ejemplo, para implementarlo en un área de trabajo `Stage`, `AIO_runtime_namespace` tiene el formato `xxxxxx_xxxxxxxxx_stage`. Para integrarse con [!DNL Experience Manager] como un entorno de producción de [!DNL Cloud Service], use las direcciones URL de la aplicación del área de trabajo de Adobe Developer App Builder `Production`.
 
@@ -25,4 +25,4 @@ Asegúrese de que el proyecto de App Builder y el área de trabajo se correspond
 
 >[!MORELIKETHIS]
 >
->* [Comprenda y administre entornos en [!DNL Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/using-cloud-manager/manage-environments).
+>* [Comprenda y administre entornos en [!DNL Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/implementing/using-cloud-manager/manage-environments).

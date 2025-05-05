@@ -11,7 +11,7 @@ ht-degree: 2%
 
 # API HTTP [!DNL Asset Compute Service] {#asset-compute-http-api}
 
-El uso de la API se limita a fines de desarrollo. La API se proporciona como contexto al desarrollar aplicaciones personalizadas. [!DNL Adobe Experience Manager] as a [!DNL Cloud Service] usa la API para pasar la información de procesamiento a una aplicación personalizada. Para obtener más información, consulte [Usar microservicios de recursos y Perfiles de procesamiento](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
+El uso de la API se limita a fines de desarrollo. La API se proporciona como contexto al desarrollar aplicaciones personalizadas. [!DNL Adobe Experience Manager] as a [!DNL Cloud Service] usa la API para pasar la información de procesamiento a una aplicación personalizada. Para obtener más información, consulte [Usar microservicios de recursos y Perfiles de procesamiento](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
 
 >[!NOTE]
 >
@@ -373,7 +373,7 @@ Las siguientes son las opciones disponibles para la matriz `renditions` en [`/pr
 
 | Nombre | Tipo | Descripción | Ejemplos |
 |-------------------|----------|-------------|---------|
-| `fmt` | `string` | XMP El formato de destino de las representaciones también puede ser `text` para la extracción de texto y `xmp` para la extracción de metadatos de como xml. Ver [formatos compatibles](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support) | `png` |
+| `fmt` | `string` | XMP El formato de destino de las representaciones también puede ser `text` para la extracción de texto y `xmp` para la extracción de metadatos de como xml. Ver [formatos compatibles](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/file-format-support) | `png` |
 | `worker` | `string` | URL de [aplicación personalizada](develop-custom-application.md). Debe ser una dirección URL `https://`. Si este campo está presente, una aplicación personalizada crea la representación. A continuación, se utiliza cualquier otro campo de representación definido en la aplicación personalizada. | `"https://1234.adobeioruntime.net`<br>`/api/v1/web`<br>`/example-custom-worker-master/worker"` |
 | `target` | `string` | Dirección URL a la que se debe cargar la representación generada mediante el PUT HTTP. | `http://w.com/img.jpg` |
 | `target` | `object` | Información de carga de URL firmada previamente de varias partes para la representación generada. AEM Esta información es para [/ Carga binaria directa de Oak](https://jackrabbit.apache.org/oak/docs/features/direct-binary-access.html) con este [comportamiento de carga multiparte](https://jackrabbit.apache.org/oak/docs/apidocs/org/apache/jackrabbit/api/binary/BinaryUpload.html).<br>Campos:<ul><li>`urls`: matriz de cadenas, una para cada URL de parte firmada previamente</li><li>`minPartSize`: el tamaño mínimo que se va a usar para una parte = url</li><li>`maxPartSize`: el tamaño máximo que se va a usar para una parte = url</li></ul> | `{ "urls": [ "https://part1...", "https://part2..." ], "minPartSize": 10000, "maxPartSize": 100000 }` |
@@ -381,7 +381,7 @@ Las siguientes son las opciones disponibles para la matriz `renditions` en [`/pr
 
 ### Campos específicos de representación {#rendition-specific-fields}
 
-Para obtener una lista de los formatos de archivo admitidos actualmente, consulte [formatos de archivo admitidos](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support).
+Para obtener una lista de los formatos de archivo admitidos actualmente, consulte [formatos de archivo admitidos](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/file-format-support).
 
 | Nombre | Tipo | Descripción | Ejemplos |
 |-------------------|----------|-------------|---------|

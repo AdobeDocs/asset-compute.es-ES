@@ -20,7 +20,7 @@ ht-degree: 12%
 
 + [Guía del usuario del servicio de asset compute](home.md)
 + [Información general](introduction.md)
-+ [Formatos de archivo compatibles](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support)
++ [Formatos de archivo compatibles](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/file-format-support)
 + [Arquitectura](architecture.md)
 + [Referencias de API](api.md)
 + Ampliar servicio de Asset compute {#extend}
@@ -30,6 +30,6 @@ ht-degree: 12%
    + [Desarrollar una aplicación personalizada](develop-custom-application.md)
    + [Prueba de una aplicación personalizada](test-custom-application.md)
    + [Implementación de una aplicación personalizada](deploy-custom-application.md)
-   + [Integrar y usar en [!DNL Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/asset-microservices-overview)
+   + [Integrar y usar en [!DNL Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/asset-microservices-overview)
 + [Solución de problemas](troubleshooting.md)
 + [Contribute al proyecto de código abierto](contribute-to-compute-service.md)
