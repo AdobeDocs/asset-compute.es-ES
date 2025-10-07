@@ -2,9 +2,9 @@
 title: Desarrollar para  [!DNL Asset Compute Service]
 description: Cree aplicaciones personalizadas con  [!DNL Asset Compute Service].
 exl-id: a0c59752-564b-4bb6-9833-ab7c58a7f38e
-source-git-commit: db38b9dc27505aa7e04cf58a646005fc2e0e8782
+source-git-commit: 94fd8c0888185f64825046b7999655e9501a71fe
 workflow-type: tm+mt
-source-wordcount: '1542'
+source-wordcount: '1489'
 ht-degree: 0%
 
 ---
@@ -25,7 +25,7 @@ Asegúrese de tener [Adobe aio-cli](https://github.com/adobe/aio-cli) instalado 
 
    Si aún no ha iniciado sesión, este comando solicitará al explorador que inicie sesión en [Adobe Developer Console](https://developer.adobe.com/console/user/servicesandapis) con su Adobe ID. Vea [aquí](https://developer.adobe.com/app-builder/docs/getting_started/first_app/#3-signing-in-from-cli) para obtener más información sobre cómo iniciar sesión desde el cli.
 
-   El Adobe recomienda que inicie sesión primero. Si tiene problemas, siga las instrucciones [para crear una aplicación sin iniciar sesión](https://developer.adobe.com/app-builder/docs/getting_started/first_app/#42-developer-is-not-logged-in-as-enterprise-organization-user).
+   Adobe recomienda iniciar sesión primero. Si tiene problemas, siga las instrucciones [para crear una aplicación sin iniciar sesión](https://developer.adobe.com/app-builder/docs/getting_started/first_app/#42-developer-is-not-logged-in-as-enterprise-organization-user).
 
 1. Después de iniciar sesión, siga las indicaciones de la CLI y seleccione `Organization`, `Project` y `Workspace` para usar en la aplicación. Elija el proyecto y el área de trabajo que creó al [configurar su entorno](setup-environment.md). Cuando se le solicite `Which extension point(s) do you wish to implement ?`, asegúrese de seleccionar `DX Asset Compute Worker`:
 
@@ -64,7 +64,7 @@ Asegúrese de tener [Adobe aio-cli](https://github.com/adobe/aio-cli) instalado 
 
    Lea aquí acerca de los [componentes principales de una aplicación App Builder](https://developer.adobe.com/app-builder/docs/getting_started/first_app/#5-anatomy-of-an-app-builder-application).
 
-   La aplicación de plantillas aprovecha el [SDK de Asset compute](https://github.com/adobe/asset-compute-sdk#asset-compute-sdk) de Adobe para cargar, descargar y organizar representaciones de aplicaciones, de modo que los desarrolladores solo necesitan implementar la lógica de aplicación personalizada. Dentro de la carpeta `actions/<worker-name>`, el archivo `index.js` es donde se agrega el código de aplicación personalizado.
+   La aplicación de plantillas aprovecha [Asset Compute SDK](https://github.com/adobe/asset-compute-sdk#asset-compute-sdk) de Adobe para cargar, descargar y organizar representaciones de aplicaciones, de modo que los desarrolladores solo necesitan implementar la lógica de aplicación personalizada. Dentro de la carpeta `actions/<worker-name>`, el archivo `index.js` es donde se agrega el código de aplicación personalizado.
 
 Consulte [aplicaciones personalizadas de ejemplo](#try-sample) para ver ejemplos e ideas de aplicaciones personalizadas.
 
@@ -83,24 +83,24 @@ La herramienta para que los desarrolladores evalúen las aplicaciones personaliz
 
 >[!NOTE]
 >
->Este contenedor es independiente del almacenamiento en la nube de [!DNL Adobe Experience Manager] como [!DNL Cloud Service]. Solo se aplica al desarrollo y las pruebas con la herramienta para desarrolladores de Assets computes.
+>Este contenedor es independiente del almacenamiento en la nube de [!DNL Adobe Experience Manager] como [!DNL Cloud Service]. Solo se aplica al desarrollo y las pruebas con la herramienta para desarrolladores de Asset Compute.
 
 Asegúrese de tener acceso a un [contenedor de almacenamiento en la nube compatible](https://github.com/adobe/asset-compute-devtool#prerequisites). Varios desarrolladores utilizan este contenedor de forma colectiva para diferentes proyectos siempre que es necesario.
 
 #### Agregar credenciales al archivo ENV {#add-credentials-env-file}
 
 Inserte las credenciales subsiguientes para la herramienta de desarrollo en el archivo `.env`. El archivo se encuentra en la raíz del proyecto de App Builder:
+<!--
+1. Add the absolute path to the private key file created while adding services to your App Builder Project:
 
-1. Agregue la ruta absoluta al archivo de clave privada creado al agregar servicios al proyecto de App Builder:
-
-   ```conf
-   ASSET_COMPUTE_PRIVATE_KEY_FILE_PATH=
-   ```
+    ```conf
+    ASSET_COMPUTE_PRIVATE_KEY_FILE_PATH=
+    ```
 
    >[!NOTE]
    >
-   >JWT está obsoleto y la clave privada no está disponible para descargar. Mientras trabajamos en actualizar las herramientas de prueba, tenga en cuenta que los trabajadores personalizados creados con OAuth se pueden implementar, pero devtools no funcionaría.
-
+   >JWT is deprecated and Private Key is not available for download. While we are working on updating the testing tools, note that custom workers created using OAuth can be deployed but devtools would not work.
+-->
 1. Descargue el archivo desde Adobe Developer Console. Vaya a la raíz del proyecto y haga clic en &quot;Descargar todo&quot; en la esquina superior derecha. El archivo se descarga con `<namespace>-<workspace>.json` como nombre de archivo. Realice una de las siguientes acciones:
 
    * Cambie el nombre del archivo como `console.json` y muévalo a la raíz del proyecto.
@@ -131,9 +131,9 @@ Inserte las credenciales subsiguientes para la herramienta de desarrollo en el a
 
 ## Ejecución de la aplicación {#run-custom-application}
 
-Antes de ejecutar la aplicación con la herramienta para desarrolladores de Assets computes, configure correctamente [credentials](#developer-tool-credentials).
+Antes de ejecutar la aplicación con la herramienta para desarrolladores de Asset Compute, configure correctamente las [credenciales](#developer-tool-credentials).
 
-Para ejecutar la aplicación en la herramienta para desarrolladores, utilice el comando `aio app run`. Implementa la acción en el Adobe [!DNL I/O Runtime] e inicia la herramienta de desarrollo en el equipo local. Esta herramienta se utiliza para probar las solicitudes de aplicación durante el desarrollo. Este es un ejemplo de solicitud de representación:
+Para ejecutar la aplicación en la herramienta para desarrolladores, utilice el comando `aio app run`. Implementa la acción en Adobe [!DNL I/O Runtime] e inicia la herramienta de desarrollo en el equipo local. Esta herramienta se utiliza para probar las solicitudes de aplicación durante el desarrollo. Este es un ejemplo de solicitud de representación:
 
 ```json
 "renditions": [
@@ -146,7 +146,7 @@ Para ejecutar la aplicación en la herramienta para desarrolladores, utilice el 
 
 >[!NOTE]
 >
->No use el marcador `--local` con el comando `run`. No funciona con [!DNL Asset Compute] aplicaciones personalizadas ni con la herramienta para desarrolladores de Assets computes. El servicio [!DNL Asset Compute] llama a las aplicaciones personalizadas y no puede tener acceso a las acciones que se ejecutan en los equipos locales del desarrollador.
+>No use el marcador `--local` con el comando `run`. No funciona con [!DNL Asset Compute] aplicaciones personalizadas ni con la herramienta para desarrolladores de Asset Compute. El servicio [!DNL Asset Compute] llama a las aplicaciones personalizadas y no puede tener acceso a las acciones que se ejecutan en los equipos locales del desarrollador.
 
 Vea [aquí](test-custom-application.md) cómo probar y depurar su aplicación. Cuando haya terminado de desarrollar su aplicación personalizada, [implemente su aplicación personalizada](deploy-custom-application.md).
 
@@ -278,7 +278,7 @@ const key = params.secretKey;
 
 ## Tamaño de aplicaciones {#sizing-workers}
 
-Se ejecuta una aplicación en un contenedor del Adobe [!DNL I/O Runtime] con [límites](https://developer.adobe.com/runtime/docs/guides/using/system_settings/) que se pueden configurar a través de `manifest.yml`:
+Una aplicación se ejecuta en un contenedor en Adobe [!DNL I/O Runtime] con [límites](https://developer.adobe.com/runtime/docs/guides/using/system_settings/) que se pueden configurar a través de `manifest.yml`:
 
 ```yaml
     actions:
@@ -290,14 +290,14 @@ Se ejecuta una aplicación en un contenedor del Adobe [!DNL I/O Runtime] con [l�
           concurrency: 1
 ```
 
-Debido al amplio procesamiento realizado por las aplicaciones de Asset compute, debe ajustar estos límites para obtener un rendimiento óptimo (lo suficientemente grande como para gestionar recursos binarios) y una mayor eficacia (sin desperdiciar recursos debido a la memoria contenedora no utilizada).
+Debido al amplio procesamiento que realizan las aplicaciones de Asset Compute, debe ajustar estos límites para obtener un rendimiento óptimo (lo suficientemente grande como para gestionar recursos binarios) y una eficacia (sin desperdiciar recursos debido a la memoria contenedora no utilizada).
 
 El tiempo de espera predeterminado para las acciones en tiempo de ejecución es de un minuto, pero se puede aumentar estableciendo el límite de `timeout` (en milisegundos). Si espera procesar archivos más grandes, aumente este tiempo. Considere el tiempo total que tarda en descargar el origen, procesar el archivo y cargar la representación. Si se agota el tiempo de espera de una acción, es decir, no se devuelve la activación antes del límite de tiempo de espera especificado, Runtime descarta el contenedor y no lo vuelve a utilizar.
 
-Las aplicaciones de asset compute por naturaleza tienden a estar enlazadas a la red y a la entrada o salida del disco. El archivo de origen debe descargarse primero. El procesamiento suele consumir muchos recursos y, a continuación, las representaciones resultantes se cargan de nuevo.
+Las aplicaciones de Asset Compute, por naturaleza, tienden a estar enlazadas a la red y a la entrada o salida del disco. El archivo de origen debe descargarse primero. El procesamiento suele consumir muchos recursos y, a continuación, las representaciones resultantes se cargan de nuevo.
 
 Puede especificar la memoria asignada a un contenedor de acciones en megabytes mediante el parámetro `memorySize`. Actualmente, este parámetro también define cuánto acceso de CPU obtiene el contenedor y, lo que es más importante, es un elemento clave del coste de utilizar Runtime (los contenedores más grandes cuestan más). Utilice un valor mayor aquí cuando el procesamiento requiera más memoria o CPU, pero tenga cuidado de no desperdiciar recursos, ya que cuanto más grandes sean los contenedores, menor será el rendimiento general.
 
-Además, es posible controlar la concurrencia de acciones dentro de un contenedor mediante la configuración `concurrency`. Esta configuración es el número de activaciones simultáneas que obtiene un solo contenedor (de la misma acción). En este modelo, el contenedor de acciones es como un servidor Node.js que recibe varias solicitudes simultáneas, hasta ese límite. El valor predeterminado `memorySize` en tiempo de ejecución se establece en 200 MB, lo que resulta ideal para acciones de App Builder más pequeñas. En el caso de las aplicaciones de Asset compute, este valor predeterminado puede ser excesivo debido a que utilizan más recursos de disco y procesamiento local. Según su implementación, es posible que algunas aplicaciones no funcionen bien con la actividad simultánea. El SDK de Asset Compute garantiza que las activaciones estén separadas por la escritura de archivos en diferentes carpetas únicas.
+Además, es posible controlar la concurrencia de acciones dentro de un contenedor mediante la configuración `concurrency`. Esta configuración es el número de activaciones simultáneas que obtiene un solo contenedor (de la misma acción). En este modelo, el contenedor de acciones es como un servidor Node.js que recibe varias solicitudes simultáneas, hasta ese límite. El valor predeterminado `memorySize` en tiempo de ejecución se establece en 200 MB, lo que resulta ideal para acciones de App Builder más pequeñas. Para las aplicaciones de Asset Compute, este valor predeterminado puede ser excesivo debido a su mayor uso de disco y procesamiento local. Según su implementación, es posible que algunas aplicaciones no funcionen bien con la actividad simultánea. Asset Compute SDK garantiza que las activaciones estén separadas escribiendo archivos en diferentes carpetas únicas.
 
 Probar aplicaciones para encontrar los números óptimos de `concurrency` y `memorySize`. Contenedores más grandes = un límite de memoria más alto podría permitir una mayor concurrencia, pero también podría ser un derroche para un tráfico más bajo.
