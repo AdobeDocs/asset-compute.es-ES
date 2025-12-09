@@ -31,7 +31,7 @@ Las excepciones a esta regla son las notas de la versión, donde los problemas c
 
 Cualquier idea que tenga para mejorar la documentación de es bienvenida como contribución. Sin embargo, los comentarios, problemas y solicitudes de extracción están destinados únicamente a *contribuciones*. No sirven para responder a sus preguntas sobre cómo utilizar el producto, implementar proyectos o resolver problemas técnicos.
 
-Cualquier pregunta sobre el uso o los errores técnicos que pueda tener debe notificarse a través del proceso de asistencia normal a través del [[!DNL Experience Manager] Portal de atención al cliente](https://experienceleague.adobe.com/?support-solution=Experience+Manager&lang=es#home) o en la [[!DNL Experience Manager] comunidad](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/ct-p/adobe-experience-manager-community).
+Cualquier pregunta sobre el uso o los errores técnicos que pueda tener debe notificarse a través del proceso de asistencia normal a través del [[!DNL Experience Manager] Portal de atención al cliente](https://experienceleague.adobe.com/es?support-solution=Experience+Manager&lang=es#home) o en la [[!DNL Experience Manager] comunidad](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/ct-p/adobe-experience-manager-community?profile.language=es).
 
 ***Las contribuciones a la documentación no sustituyen al Servicio de atención al cliente de Adobe*** y se rechaza cualquier contribución de este tipo que busque respuestas a preguntas relacionadas con la asistencia.
 
