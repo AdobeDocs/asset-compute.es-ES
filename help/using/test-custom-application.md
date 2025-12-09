@@ -2,7 +2,7 @@
 title: Probar y depurar  [!DNL Asset Compute Service] aplicación personalizada
 description: Probar y depurar  [!DNL Asset Compute Service] aplicación personalizada.
 exl-id: c2534904-0a07-465e-acea-3cb578d3bc08
-source-git-commit: c6f747ebd6d1b17834f1af0837609a148804f8a9
+source-git-commit: f199cecfe4409e2370b30783f984062196dd807d
 workflow-type: tm+mt
 source-wordcount: '775'
 ht-degree: 0%
@@ -25,13 +25,13 @@ To run tests for a custom application, run `aio asset-compute test-worker` comma
 Document interactively running `adobe-asset-compute` commands `test-worker` and `run-worker`.
 -->
 
-Este comando ejecuta un marco de prueba unitario personalizado para las acciones de la aplicación de Asset compute en el proyecto como se describe a continuación. Se conectó a través de una configuración en el archivo `package.json`. También es posible tener pruebas unitarias de JavaScript como Jest. El `aio app test` ejecuta ambos.
+Este comando ejecuta un marco de prueba unitario personalizado para las acciones de la aplicación Asset Compute en el proyecto como se describe a continuación. Se conectó a través de una configuración en el archivo `package.json`. También es posible tener pruebas unitarias de JavaScript como Jest. El `aio app test` ejecuta ambos.
 
 El complemento [aio-cli-plugin-asset-compute](https://github.com/adobe/aio-cli-plugin-asset-compute#install-as-local-devdependency) está incrustado como una dependencia de desarrollo en la aplicación de aplicación personalizada, de modo que no es necesario instalarlo en sistemas de compilación o prueba.
 
 ### Marco de prueba unitario de aplicación {#unit-test-framework}
 
-El marco de pruebas unitarias de la aplicación de Asset compute permite probar aplicaciones sin escribir código. Se basa en el principio del archivo de origen a representación de las aplicaciones. Se debe configurar una estructura de archivos y carpetas determinada para definir casos de prueba con archivos de origen de prueba, parámetros opcionales, representaciones esperadas y scripts de validación personalizados. De forma predeterminada, las representaciones se comparan para la igualdad de bytes. Además, los servicios HTTP externos se pueden burlar fácilmente mediante archivos JSON simples.
+El marco de pruebas unitarias de la aplicación de Asset Compute permite probar aplicaciones sin escribir código. Se basa en el principio del archivo de origen a representación de las aplicaciones. Se debe configurar una estructura de archivos y carpetas determinada para definir casos de prueba con archivos de origen de prueba, parámetros opcionales, representaciones esperadas y scripts de validación personalizados. De forma predeterminada, las representaciones se comparan para la igualdad de bytes. Además, los servicios HTTP externos se pueden burlar fácilmente mediante archivos JSON simples.
 
 ### Agregar pruebas {#add-tests}
 
@@ -105,7 +105,7 @@ El ejemplo `worker-animal-pictures` contiene un [archivo de prueba](https://gith
 
 #### Uso compartido de archivos entre casos de prueba {#share-files-across-test-cases}
 
-El Adobe recomienda utilizar enlaces simbólicos relativos si comparte scripts de `file.*`, `params.json` o `validate` en varias pruebas. Son compatibles con Git. Asegúrese de asignar un nombre único a los archivos compartidos, ya que es posible que tenga otros distintos. En el ejemplo siguiente, las pruebas mezclan y hacen coincidir algunos archivos compartidos, y los suyos propios:
+Adobe recomienda utilizar enlaces simbólicos relativos si comparte scripts de `file.*`, `params.json` o `validate` en varias pruebas. Son compatibles con Git. Asegúrese de asignar un nombre único a los archivos compartidos, ya que es posible que tenga otros distintos. En el ejemplo siguiente, las pruebas mezclan y hacen coincidir algunos archivos compartidos, y los suyos propios:
 
 ```json
 tests/
@@ -158,13 +158,13 @@ Archivo de parámetros con motivo del error:
 }
 ```
 
-Ver una lista completa y una descripción de [razones de error de Asset compute](https://github.com/adobe/asset-compute-commons#error-reasons).
+Ver una lista completa y una descripción de [razones de error de Asset Compute](https://github.com/adobe/asset-compute-commons#error-reasons).
 
 ## Depuración de una aplicación personalizada {#debug-custom-worker}
 
 Los pasos siguientes muestran cómo se puede depurar una aplicación personalizada mediante Visual Studio Code. Permite ver registros en directo, puntos de interrupción de visitas y paso a paso por el código, así como la recarga en directo de los cambios del código local en cada activación.
 
-`aio` automatiza muchos de estos pasos de forma predeterminada. Vaya a la sección Depuración de la aplicación en [Adobe Developer App Builder documentation](https://developer.adobe.com/app-builder/docs/getting_started/first_app). Por ahora, los pasos siguientes incluyen una solución.
+`aio` automatiza muchos de estos pasos de forma predeterminada. Vaya a la sección Depuración de la aplicación en [Adobe Developer App Builder documentation](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#). Por ahora, los pasos siguientes incluyen una solución.
 
 1. Instale el [wskdebug](https://github.com/apache/openwhisk-wskdebug) más reciente de GitHub y el [ngrok](https://www.npmjs.com/package/ngrok) opcional.
 
@@ -176,7 +176,7 @@ Los pasos siguientes muestran cómo se puede depurar una aplicación personaliza
 1. Añada a la configuración de usuario el archivo JSON. Sigue utilizando el depurador de código antiguo de Visual Studio. El nuevo tiene [algunos problemas](https://github.com/apache/openwhisk-wskdebug/issues/74) con wskdebug: `"debug.javascript.usePreview": false`.
 1. Cierre todas las instancias de aplicaciones abiertas mediante `aio app run`.
 1. Implemente el código más reciente con `aio app deploy`.
-1. Ejecute solamente la Asset compute Devtool usando `aio asset-compute devtool`. Manténgalo abierto.
+1. Ejecute solamente la herramienta de desarrollo de Asset Compute con `aio asset-compute devtool`. Manténgalo abierto.
 1. En el Editor de código de Visual Studio, agregue la siguiente configuración de depuración a su `launch.json`:
 
    ```json

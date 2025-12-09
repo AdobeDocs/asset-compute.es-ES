@@ -1,8 +1,8 @@
 ---
-title: Contribute a los componentes de código abierto de  [!DNL Asset Compute Service]
-description: Contribute a los componentes de código abierto de  [!DNL Asset Compute Service].
+title: Aportar a los componentes de código abierto de  [!DNL Asset Compute Service]
+description: Contribuir a los componentes de código abierto de  [!DNL Asset Compute Service].
 exl-id: 99a4b4d9-4709-4f8e-9f8c-96ba1783c4c3
-source-git-commit: f15b9819d3319d22deccdf7e39c0f72728baaa39
+source-git-commit: 63f83ff33ac6cd090fac4f6db18000155f464643
 workflow-type: tm+mt
 source-wordcount: '173'
 ht-degree: 0%
@@ -11,9 +11,9 @@ ht-degree: 0%
 
 # Contribute {#contribute}
 
-La extensibilidad de [!DNL Asset Compute Service] se ha desarrollado bajo un modelo de desarrollo abierto en [github.com/adobe](https://github.com/adobe). El Adobe acoge con satisfacción las contribuciones de los desarrolladores de extensiones. Todos los componentes relevantes para desarrollar, crear y probar aplicaciones personalizadas son de código abierto. Algunas formas sugeridas de contribuir son las siguientes:
+La extensibilidad de [!DNL Asset Compute Service] se ha desarrollado bajo un modelo de desarrollo abierto en [github.com/adobe](https://github.com/adobe). Adobe agradece las contribuciones de los desarrolladores de extensiones. Todos los componentes relevantes para desarrollar, crear y probar aplicaciones personalizadas son de código abierto. Algunas formas sugeridas de contribuir son las siguientes:
 
-* Compartir comentarios: cree un problema de GitHub en el repositorio adecuado, para informar de errores en el producto o la documentación, para solicitar mejoras y para solicitar nuevas funciones. ¿No está seguro de qué repositorio utilizar para enviar el problema? Si es así, registre un problema en el [repositorio del SDK de Asset compute](https://github.com/adobe/asset-compute-sdk) para que se enrute correctamente.
+* Compartir comentarios: cree un problema de GitHub en el repositorio adecuado, para informar de errores en el producto o la documentación, para solicitar mejoras y para solicitar nuevas funciones. ¿No está seguro de qué repositorio utilizar para enviar el problema? Si es así, registre un problema en el [repositorio SDK de Asset Compute](https://github.com/adobe/asset-compute-sdk) para que se enrute correctamente.
 
 * Parche: Para proporcionar un parche, ramifique el repositorio existente y envíe una solicitud de extracción.
 
@@ -25,7 +25,7 @@ Ver esta lista de [bibliotecas de código abierto](https://github.com/adobe/asse
 
 * [Introducción a Apache OpenWhisk](https://github.com/apache/openwhisk/tree/master/docs#getting-started-with-openwhisk).
 * [Laboratorio: cree IA maquetable con  [!DNL Adobe Sensei] funciones y Adobe [!DNL I/O Runtime]](https://opensource.adobe.com/adobe-sensei-ai-functions/index.html).
-* Adobe [[!DNL I/O Runtime] PREGUNTAS MÁS FRECUENTES](https://developer.adobe.com/runtime/docs/support/faq/)
+* [[!DNL I/O Runtime] PREGUNTAS FRECUENTES](https://developer.adobe.com/app-builder/docs/intro_and_overview/faq#using-io-runtime) DE Adobe.
 
 <!-- **TBD** for post-release:
 * Link to Adobe Developer App Builder open-source components.

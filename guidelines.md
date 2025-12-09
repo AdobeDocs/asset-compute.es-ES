@@ -1,15 +1,15 @@
 ---
-source-git-commit: f15b9819d3319d22deccdf7e39c0f72728baaa39
+source-git-commit: f199cecfe4409e2370b30783f984062196dd807d
 workflow-type: tm+mt
-source-wordcount: '588'
-ht-degree: 33%
+source-wordcount: '587'
+ht-degree: 30%
 
 ---
-# Directrices para Contribute en la documentación de
+# Directrices para contribuir a la documentación de
 
-## Filosofía de la documentación
+## Filosofía de documentación
 
-Los usuarios trabajan en entornos altamente competitivos y se esfuerzan por crear experiencias digitales que los diferencien de su competencia. Por lo tanto, es vital que cuando Adobe ofrece nuevas herramientas avanzadas, estas herramientas se complementen con una documentación precisa y clara. Documentación que permite a los clientes utilizar su inversión inmediatamente y maximizar el retorno de la inversión.
+Los usuarios trabajan en entornos altamente competitivos y se esfuerzan por crear experiencias digitales que los diferencien de su competencia. Por lo tanto, es vital que cuando Adobe ofrece nuevas herramientas avanzadas, estas se complementen con una documentación precisa y clara. Documentación que permite a los clientes utilizar su inversión inmediatamente y maximizar el retorno de la inversión.
 
 El objetivo es poner la documentación en manos de los usuarios lo antes posible. Por lo tanto, Adobe concede prioridad a una documentación precisa y útil, y se esfuerza por actualizarla y mejorarla continuamente.
 
@@ -17,25 +17,25 @@ El objetivo es poner la documentación en manos de los usuarios lo antes posible
 
 Para mejorar continuamente la documentación de, contamos con la ayuda de toda la comunidad de usuarios de. Ya sea a través de solicitudes de extracción o incidencias, las mejoras en la documentación pueden ser correcciones, aclaraciones, expansiones y ejemplos adicionales.
 
-## Normas de documentación
+## Estándares de documentación
 
-Cualquier aportación a la documentación de, ya sea en forma de solicitud de extracción o de incidencia, debe ajustarse a las normas de aportación y documentación de Adobe.
+Cualquier contribución a la documentación de, ya sea en forma de solicitud de extracción o de incidencia, debe ajustarse a las normas de contribución y documentación de Adobe.
 
-### Los casos de uso estándar se documentan durante el Adobe
+### Los casos de uso estándar se documentan en Adobe
 
 La documentación cubre casos de uso estándar. Los casos de uso que exceden el ámbito de la instalación y el uso estándar y admitidos del producto no forman parte de la documentación.
 
-Las excepciones a esta regla son las notas de la versión, donde los problemas conocidos pueden enumerarse con posibles soluciones alternativas que apruebe el Adobe.
+Las excepciones a esta regla son las notas de la versión, donde los problemas conocidos pueden enumerarse con posibles soluciones alternativas que apruebe Adobe.
 
 ### Las contribuciones a la documentación no sirven para responder preguntas de los clientes
 
-Cualquier idea que tenga para mejorar la documentación de es bienvenida como contribución. Sin embargo, los comentarios, los problemas y las solicitudes de extracción están destinados a *contribuciones* solo. No sirven para responder a sus preguntas sobre cómo utilizar el producto, implementar proyectos o resolver problemas técnicos.
+Cualquier idea que tenga para mejorar la documentación de es bienvenida como contribución. Sin embargo, los comentarios, problemas y solicitudes de extracción están destinados únicamente a *contribuciones*. No sirven para responder a sus preguntas sobre cómo utilizar el producto, implementar proyectos o resolver problemas técnicos.
 
-Cualquier pregunta sobre el uso o los errores técnicos que pueda tener debe notificarse a través del proceso de asistencia normal mediante el [[!DNL Experience Manager] Portal de asistencia al cliente](https://experienceleague.adobe.com/es?support-solution=Experience+Manager&lang=es#home) o discutido en el [[!DNL Experience Manager] comunidad](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/ct-p/adobe-experience-manager-community?profile.language=es).
+Cualquier pregunta sobre el uso o los errores técnicos que pueda tener debe notificarse a través del proceso de asistencia normal a través del [[!DNL Experience Manager] Portal de atención al cliente](https://experienceleague.adobe.com/?support-solution=Experience+Manager&lang=es#home) o en la [[!DNL Experience Manager] comunidad](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/ct-p/adobe-experience-manager-community).
 
-***Las contribuciones a la documentación no sustituyen al Servicio de atención al cliente de Adobe*** y se rechazará cualquier contribución de este tipo que busque respuestas a preguntas relacionadas con la asistencia.
+***Las contribuciones a la documentación no sustituyen al Servicio de atención al cliente de Adobe*** y se rechaza cualquier contribución de este tipo que busque respuestas a preguntas relacionadas con la asistencia.
 
-### Las contribuciones deben hacer referencia claramente a las páginas de documentación afectadas.
+### Las contribuciones deben hacer referencia claramente a las páginas de documentación afectadas
 
 Si crea un problema para sugerir mejoras en la documentación, debe incluir vínculos a las páginas afectadas. Si crea un problema utilizando el vínculo **Editar esta página** en una página de documentación, el problema se crea automáticamente con un vínculo a la página.
 
@@ -59,7 +59,7 @@ Recuerde, los lectores de la documentación son de todo el mundo y no se puede e
 
 #### Siga el Manual de estilo de Microsoft
 
-[El Manual de estilo de Microsoft](https://learn.microsoft.com/es_es/style-guide/welcome/) es una guía de estilo de documentación disponible libremente que se centra en documentación de software.
+[El Manual de estilo de Microsoft](https://learn.microsoft.com/es_es/style-guide/welcome/) es una guía de estilo de documentación disponible de forma gratuita que se centra en la documentación de software.
 
 ### Formato
 

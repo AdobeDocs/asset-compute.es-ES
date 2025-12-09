@@ -2,7 +2,7 @@
 title: Desarrollar para  [!DNL Asset Compute Service]
 description: Cree aplicaciones personalizadas con  [!DNL Asset Compute Service].
 exl-id: a0c59752-564b-4bb6-9833-ab7c58a7f38e
-source-git-commit: 94fd8c0888185f64825046b7999655e9501a71fe
+source-git-commit: 63f83ff33ac6cd090fac4f6db18000155f464643
 workflow-type: tm+mt
 source-wordcount: '1489'
 ht-degree: 0%
@@ -21,11 +21,11 @@ Antes de empezar a desarrollar una aplicación personalizada:
 
 Asegúrese de tener [Adobe aio-cli](https://github.com/adobe/aio-cli) instalado localmente.
 
-1. Para crear una aplicación personalizada, [cree un proyecto de App Builder](https://developer.adobe.com/app-builder/docs/getting_started/first_app/#4-bootstrapping-new-app-using-the-cli). Para ello, ejecute `aio app init <app-name>` en su terminal.
+1. Para crear una aplicación personalizada, [cree un proyecto de App Builder](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#4-bootstrapping-new-app-using-the-cli). Para ello, ejecute `aio app init <app-name>` en su terminal.
 
-   Si aún no ha iniciado sesión, este comando solicitará al explorador que inicie sesión en [Adobe Developer Console](https://developer.adobe.com/console/user/servicesandapis) con su Adobe ID. Vea [aquí](https://developer.adobe.com/app-builder/docs/getting_started/first_app/#3-signing-in-from-cli) para obtener más información sobre cómo iniciar sesión desde el cli.
+   Si aún no ha iniciado sesión, este comando solicitará al explorador que inicie sesión en [Adobe Developer Console](https://developer.adobe.com/console/user/servicesandapis) con su Adobe ID. Vea [aquí](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#3-signing-in-from-cli) para obtener más información sobre cómo iniciar sesión desde el cli.
 
-   Adobe recomienda iniciar sesión primero. Si tiene problemas, siga las instrucciones [para crear una aplicación sin iniciar sesión](https://developer.adobe.com/app-builder/docs/getting_started/first_app/#42-developer-is-not-logged-in-as-enterprise-organization-user).
+   Adobe recomienda iniciar sesión primero. Si tiene problemas, siga las instrucciones [para crear una aplicación sin iniciar sesión](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#42-developer-is-not-logged-in-as-enterprise-organization-user).
 
 1. Después de iniciar sesión, siga las indicaciones de la CLI y seleccione `Organization`, `Project` y `Workspace` para usar en la aplicación. Elija el proyecto y el área de trabajo que creó al [configurar su entorno](setup-environment.md). Cuando se le solicite `Which extension point(s) do you wish to implement ?`, asegúrese de seleccionar `DX Asset Compute Worker`:
 
@@ -62,7 +62,7 @@ Asegúrese de tener [Adobe aio-cli](https://github.com/adobe/aio-cli) instalado 
 
 1. Siga el resto de las indicaciones y abra la nueva aplicación en Visual Studio Code (o su editor de código favorito). Contiene el andamiaje y el código de ejemplo de una aplicación personalizada.
 
-   Lea aquí acerca de los [componentes principales de una aplicación App Builder](https://developer.adobe.com/app-builder/docs/getting_started/first_app/#5-anatomy-of-an-app-builder-application).
+   Lea aquí acerca de los [componentes principales de una aplicación App Builder](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#5-anatomy-of-an-app-builder-application).
 
    La aplicación de plantillas aprovecha [Asset Compute SDK](https://github.com/adobe/asset-compute-sdk#asset-compute-sdk) de Adobe para cargar, descargar y organizar representaciones de aplicaciones, de modo que los desarrolladores solo necesitan implementar la lógica de aplicación personalizada. Dentro de la carpeta `actions/<worker-name>`, el archivo `index.js` es donde se agrega el código de aplicación personalizado.
 
@@ -104,7 +104,7 @@ Inserte las credenciales subsiguientes para la herramienta de desarrollo en el a
 1. Descargue el archivo desde Adobe Developer Console. Vaya a la raíz del proyecto y haga clic en &quot;Descargar todo&quot; en la esquina superior derecha. El archivo se descarga con `<namespace>-<workspace>.json` como nombre de archivo. Realice una de las siguientes acciones:
 
    * Cambie el nombre del archivo como `console.json` y muévalo a la raíz del proyecto.
-   * De forma opcional, puede añadir la ruta absoluta al archivo JSON de integración de Adobe Developer Console. Este archivo es el mismo archivo [`console.json`](https://developer.adobe.com/app-builder/docs/getting_started/first_app/#42-developer-is-not-logged-in-as-enterprise-organization-user) que se descargó en el área de trabajo del proyecto.
+   * De forma opcional, puede añadir la ruta absoluta al archivo JSON de integración de Adobe Developer Console. Este archivo es el mismo archivo [`console.json`](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#42-developer-is-not-logged-in-as-enterprise-organization-user) que se descargó en el área de trabajo del proyecto.
 
      ```conf
      ASSET_COMPUTE_INTEGRATION_FILE_PATH=
@@ -243,7 +243,7 @@ const orgId = params.auth.orgId; // Experience Cloud Organization
 
 ### Pasar credenciales para sistemas de terceros {#pass-credentials-for-tp}
 
-Para gestionar las credenciales de otros servicios externos, páselas como parámetros predeterminados en las acciones. Se cifran automáticamente en tránsito. Para obtener más información, consulte [creación de acciones en la guía para desarrolladores de Adobe I/O Runtime](https://developer.adobe.com/runtime/docs/guides/using/creating_actions/). A continuación, configúrelos mediante variables de entorno durante la implementación. Se puede tener acceso a estos parámetros en el objeto `params` dentro de la acción.
+Para gestionar las credenciales de otros servicios externos, páselas como parámetros predeterminados en las acciones. Se cifran automáticamente en tránsito. Para obtener más información, consulte [creación de acciones en la guía para desarrolladores de Adobe I/O Runtime](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/creating-actions#). A continuación, configúrelos mediante variables de entorno durante la implementación. Se puede tener acceso a estos parámetros en el objeto `params` dentro de la acción.
 
 Establecer los parámetros predeterminados dentro de `inputs` en `manifest.yml`:
 
@@ -278,7 +278,7 @@ const key = params.secretKey;
 
 ## Tamaño de aplicaciones {#sizing-workers}
 
-Una aplicación se ejecuta en un contenedor en Adobe [!DNL I/O Runtime] con [límites](https://developer.adobe.com/runtime/docs/guides/using/system_settings/) que se pueden configurar a través de `manifest.yml`:
+Una aplicación se ejecuta en un contenedor en Adobe [!DNL I/O Runtime] con [límites](https://developer.adobe.com/app-builder/docs/guides/runtime_guides/system-settings#) que se pueden configurar a través de `manifest.yml`:
 
 ```yaml
     actions:
