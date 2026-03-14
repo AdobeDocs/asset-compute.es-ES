@@ -22,7 +22,7 @@ Algunas sugerencias genéricas de solución de problemas que pueden ayudarle a s
 
 ## Problemas de inicio de sesión mediante el Adobe [!DNL aio-cli] {#login-via-aio-cli}
 
-Si tiene problemas para iniciar sesión en [!DNL Adobe Developer Console] [ a través del Adobe  [!DNL aio-cli]](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#3-signing-in-from-cli), agregue manualmente las credenciales necesarias para desarrollar, probar e implementar la aplicación personalizada:
+Si tiene problemas para iniciar sesión en [!DNL Adobe Developer Console] [&#x200B; a través del Adobe  [!DNL aio-cli]](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#3-signing-in-from-cli), agregue manualmente las credenciales necesarias para desarrollar, probar e implementar la aplicación personalizada:
 
 1. Desplácese al proyecto y espacio de trabajo de Adobe Developer App Builder en [Adobe Developer Console](https://developer.adobe.com/console/user/servicesandapis) y presione **[!UICONTROL Descargar]** en la esquina superior derecha. Abra este archivo y guarde este JSON en un lugar seguro del equipo.
 
