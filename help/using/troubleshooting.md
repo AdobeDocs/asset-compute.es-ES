@@ -1,34 +1,34 @@
 ---
-title: Solucionar problemas [!DNL Asset Compute Service]
-description: Solucionar problemas y depurar aplicaciones personalizadas usando  [!DNL Asset Compute Service].
+title: Solucionar problemas de  [!DNL Asset Compute Service]
+description: Solucionar problemas y depurar aplicaciones personalizadas con  [!DNL Asset Compute Service].
 exl-id: 017fff91-e5e9-4a30-babf-5faa1ebefc2f
-source-git-commit: 63f83ff33ac6cd090fac4f6db18000155f464643
+source-git-commit: aed361a577fc53caec4118e417b1c0c814617b51
 workflow-type: tm+mt
-source-wordcount: '273'
+source-wordcount: '293'
 ht-degree: 0%
 
 ---
 
 # Solución de problemas {#troubleshoot}
 
-Algunas sugerencias genéricas para la resolución de problemas que pueden ayudarle a solucionar problemas con el servicio Asset Compute son:
+Algunas sugerencias genéricas de solución de problemas que pueden ayudarle a solucionar problemas con el servicio de Asset compute son:
 
-* Asegúrese de que la aplicación de JavaScript no se bloquee durante el inicio. Estos bloqueos suelen estar relacionados con la falta de una biblioteca o con una dependencia.
-* Asegúrese de que se hace referencia a todas las dependencias que se van a instalar en el archivo `package.json` de la aplicación.
-* Asegúrese de que los errores que puedan provenir de la limpieza en caso de error no generen sus propios errores que oculten el problema original.
+* Asegúrese de que la aplicación JavaScript no se bloquee al iniciarse. Estos bloqueos suelen estar relacionados con una biblioteca que falta o una dependencia.
+* Asegúrese de que todas las dependencias que se vayan a instalar estén referenciadas en el archivo `package.json` de la aplicación.
+* Asegúrese de que los errores que puedan surgir de la limpieza en caso de error no generen sus propios errores que oculten el problema original.
 
-* Al iniciar la herramienta para desarrolladores por primera vez con una nueva integración de [!DNL Asset Compute Service], puede fallar la primera solicitud de procesamiento si el diario de eventos de Asset Compute no está completamente configurado. Espere un poco para que el historial se configure antes de enviar otra solicitud.
-* Asegúrese de que todas las API necesarias (Asset Compute, Adobe [!DNL I/O Events], administración de eventos y tiempo de ejecución) estén incluidas en Adobe [!DNL `I/O Project`] y Workspace para evitar errores de solicitud de `/register` o `/process`.
+* Al iniciar la herramienta de programador por primera vez con una nueva integración de [!DNL Asset Compute Service], se puede producir un error en la primera solicitud de procesamiento si el Diario de eventos de Asset compute no está configurado completamente. Espere a que el diario se configure antes de enviar otra solicitud.
+* Asegúrese de que todas las Assets computes de API necesarias, el Adobe [!DNL I/O Events], la administración de eventos y el motor en tiempo de ejecución estén incluidos en el Adobe [!DNL `I/O Project`] y el área de trabajo para evitar errores de solicitud `/register` o `/process`.
 
-## Iniciar sesión mediante Adobe [!DNL aio-cli] {#login-via-aio-cli}
+## Problemas de inicio de sesión mediante el Adobe [!DNL aio-cli] {#login-via-aio-cli}
 
-Si tiene problemas para iniciar sesión en [!DNL Adobe Developer Console] [a través de Adobe [!DNL aio-cli]](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#3-signing-in-from-cli), agregue manualmente las credenciales necesarias para desarrollar, probar e implementar su aplicación personalizada:
+Si tiene problemas para iniciar sesión en [!DNL Adobe Developer Console] [ a través del Adobe  [!DNL aio-cli]](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#3-signing-in-from-cli), agregue manualmente las credenciales necesarias para desarrollar, probar e implementar la aplicación personalizada:
 
-1. Vaya a su proyecto de Adobe Developer App Builder y al área de trabajo en [Adobe Developer Console](https://developer.adobe.com/console/user/servicesandapis) y presione **[!UICONTROL Descargar]** desde la esquina superior derecha. Abra este archivo y guarde este JSON en un lugar seguro de su equipo.
+1. Desplácese al proyecto y espacio de trabajo de Adobe Developer App Builder en [Adobe Developer Console](https://developer.adobe.com/console/user/servicesandapis) y presione **[!UICONTROL Descargar]** en la esquina superior derecha. Abra este archivo y guarde este JSON en un lugar seguro del equipo.
 
-1. Navegue hasta el archivo ENV en la aplicación de Adobe Developer App Builder.
+1. Acceda al archivo ENV en la aplicación Adobe Developer App Builder.
 
-1. Agregar las credenciales de Adobe [!DNL I/O Runtime]. Obtenga las credenciales de Adobe [!DNL I/O Runtime] del JSON descargado. Las credenciales están en `project.workspace.services.runtime`. Agregar las credenciales de tiempo de ejecución [!DNL Adobe I/O] en las variables `AIO_runtime_XXX`:
+1. Agregue las credenciales de Adobe [!DNL I/O Runtime]. Obtenga las credenciales de Adobe [!DNL I/O Runtime] del JSON descargado. Las credenciales están por debajo de `project.workspace.services.runtime`. Agregue las credenciales de tiempo de ejecución [!DNL Adobe I/O] en las variables `AIO_runtime_XXX`:
 
    ```json
    AIO_runtime_auth=
@@ -41,9 +41,10 @@ Si tiene problemas para iniciar sesión en [!DNL Adobe Developer Console] [a tra
        ASSET_COMPUTE_INTEGRATION_FILE_PATH=
    ```
 
-1. Configure el resto de [las credenciales necesarias](develop-custom-application.md) para la herramienta para desarrolladores.
+1. Configure el resto de las [credenciales requeridas](develop-custom-application.md) necesarias para la herramienta de desarrollo.
 
-<!-- TBD for later:
+<!-- 
+TBD for later:
 Add any best practices for developers in this section:
 * Any items to take care of when creating projects.
 * Any naming conventions, reserved keywords, etc.?

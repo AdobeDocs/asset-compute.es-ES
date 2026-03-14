@@ -2,10 +2,10 @@
 title: Arquitectura de  [!DNL Asset Compute Service]
 description: Cómo  [!DNL Asset Compute Service] API, aplicaciones y SDK trabajan juntos para proporcionar un servicio de procesamiento de recursos nativo de la nube.
 exl-id: 658ee4b7-5eb1-4109-b263-1b7d705e49d6
-source-git-commit: f199cecfe4409e2370b30783f984062196dd807d
+source-git-commit: aed361a577fc53caec4118e417b1c0c814617b51
 workflow-type: tm+mt
-source-wordcount: '478'
-ht-degree: 0%
+source-wordcount: '494'
+ht-degree: 1%
 
 ---
 
@@ -23,7 +23,7 @@ La base sobre la que se basa la arquitectura incluye lo siguiente:
 
 * El concepto sin servidor de [!DNL Adobe I/O] Runtime ofrece numerosas ventajas: procesamiento asincrónico, altamente escalable, aislado y basado en trabajos, que es perfecto para el procesamiento de recursos.
 
-* El almacenamiento en la nube binaria proporciona las funciones necesarias para almacenar y acceder a los archivos y representaciones de recursos de forma individual, sin requerir permisos de acceso completos al almacenamiento, mediante referencias de URL firmadas previamente. La aceleración de la transferencia, el almacenamiento en caché de CDN y la co-ubicación de aplicaciones informáticas con almacenamiento en la nube permiten un acceso óptimo a contenido de baja latencia. Se admiten las nubes de AWS y Azure.
+* El almacenamiento en la nube binaria proporciona las funciones necesarias para almacenar y acceder a los archivos y representaciones de recursos de forma individual, sin requerir permisos de acceso completos al almacenamiento, mediante referencias de URL firmadas previamente. La aceleración de la transferencia, el almacenamiento en caché de CDN y la co-ubicación de aplicaciones informáticas con almacenamiento en la nube permiten un acceso óptimo a contenido de baja latencia. Se admiten las nubes AWS y Azure.
 
 ![Arquitectura del servicio Asset Compute](assets/architecture-diagram.png)
 
@@ -37,7 +37,8 @@ La arquitectura consta de las siguientes partes:
 
 * **Una [biblioteca de aplicaciones comunes](https://github.com/adobe/asset-compute-sdk)** administra tareas comunes. Por ejemplo, descargar el archivo de origen, cargar las representaciones, crear informes de errores, enviar eventos y supervisar. Este diseño garantiza que el desarrollo de aplicaciones se mantenga sencillo, respetando el concepto sin servidor, con interacciones limitadas al sistema de archivos local.
 
-<!-- TBD:
+<!-- 
+TBD:
 
 * About the YAML file?
 * minimize description to custom applications

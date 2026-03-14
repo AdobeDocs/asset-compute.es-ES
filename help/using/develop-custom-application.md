@@ -2,9 +2,9 @@
 title: Desarrollar para  [!DNL Asset Compute Service]
 description: Cree aplicaciones personalizadas con  [!DNL Asset Compute Service].
 exl-id: a0c59752-564b-4bb6-9833-ab7c58a7f38e
-source-git-commit: 63f83ff33ac6cd090fac4f6db18000155f464643
+source-git-commit: aed361a577fc53caec4118e417b1c0c814617b51
 workflow-type: tm+mt
-source-wordcount: '1489'
+source-wordcount: '1722'
 ht-degree: 0%
 
 ---
@@ -72,7 +72,8 @@ Consulte [aplicaciones personalizadas de ejemplo](#try-sample) para ver ejemplos
 
 Al iniciar sesión al crear la aplicación, la mayoría de las credenciales de App Builder se recopilan en el archivo ENV. Sin embargo, el uso de la herramienta para desarrolladores requiere credenciales adicionales.
 
-<!-- TBD: Check if manual setup of credentials is required.
+<!-- 
+TBD: Check if manual setup of credentials is required.
 Manual set up of credentials is removed from troubleshooting and best practices page. Link was broken.
 If you did not log in, refer to our troubleshooting guide to [set up credentials manually](troubleshooting.md).
 -->
@@ -110,7 +111,7 @@ Inserte las credenciales subsiguientes para la herramienta de desarrollo en el a
      ASSET_COMPUTE_INTEGRATION_FILE_PATH=
      ```
 
-1. Agregue las credenciales de S3 o Azure Storage. Solo necesita acceder a una solución de almacenamiento en la nube.
+1. Añada las credenciales de almacenamiento de S3 o Azure. Solo necesita acceder a una solución de almacenamiento en la nube.
 
    ```conf
    # S3 credentials
@@ -146,24 +147,24 @@ Para ejecutar la aplicación en la herramienta para desarrolladores, utilice el 
 
 >[!NOTE]
 >
->No use el marcador `--local` con el comando `run`. No funciona con [!DNL Asset Compute] aplicaciones personalizadas ni con la herramienta para desarrolladores de Asset Compute. El servicio [!DNL Asset Compute] llama a las aplicaciones personalizadas y no puede tener acceso a las acciones que se ejecutan en los equipos locales del desarrollador.
+>No utilice el indicador `--local` con el comando `run`. No funciona con las aplicaciones personalizadas de [!DNL Asset Compute] y la herramienta de desarrollo de Assets computes. El servicio [!DNL Asset Compute] llama a las aplicaciones personalizadas y no puede tener acceso a las acciones que se ejecutan en los equipos locales del desarrollador.
 
-Vea [aquí](test-custom-application.md) cómo probar y depurar su aplicación. Cuando haya terminado de desarrollar su aplicación personalizada, [implemente su aplicación personalizada](deploy-custom-application.md).
+Vea [aquí](test-custom-application.md) cómo probar y depurar la aplicación. Cuando hayas terminado de desarrollar tu aplicación personalizada, [implementa tu aplicación personalizada](deploy-custom-application.md).
 
-## Pruebe la aplicación de ejemplo proporcionada por Adobe. {#try-sample}
+## Pruebe la aplicación de ejemplo proporcionada por Adobe {#try-sample}
 
 A continuación se muestran ejemplos de aplicaciones personalizadas:
 
 * [worker-basic](https://github.com/adobe/asset-compute-example-workers/tree/master/projects/worker-basic)
-* [imágenes de animales de trabajo](https://github.com/adobe/asset-compute-example-workers/tree/master/projects/worker-animal-pictures)
+* [worker-animal-pictures](https://github.com/adobe/asset-compute-example-workers/tree/master/projects/worker-animal-pictures)
 
 ### Aplicación personalizada de plantilla {#template-custom-application}
 
-[worker-basic](https://github.com/adobe/asset-compute-example-workers/tree/master/projects/worker-basic) es una aplicación de plantilla. Genera una representación simplemente copiando el archivo de origen. El contenido de esta aplicación es la plantilla recibida al elegir `Adobe Asset Compute` en la creación de la aplicación AIO.
+[worker-basic](https://github.com/adobe/asset-compute-example-workers/tree/master/projects/worker-basic) es una aplicación de plantilla. Genera una copia simplemente copiando el archivo de origen. El contenido de esta aplicación es la plantilla recibida al elegir `Adobe Asset Compute` en la creación de la aplicación de audio.
 
-El archivo de aplicación [`worker-basic.js`](https://github.com/adobe/asset-compute-example-workers/blob/master/projects/worker-basic/worker-basic.js) usa [`asset-compute-sdk`](https://github.com/adobe/asset-compute-sdk#overview) para descargar el archivo de origen, organizar cada procesamiento de representación y cargar las representaciones resultantes de nuevo en el almacenamiento de la nube.
+El archivo de aplicación [`worker-basic.js`](https://github.com/adobe/asset-compute-example-workers/blob/master/projects/worker-basic/worker-basic.js) usa [`asset-compute-sdk`](https://github.com/adobe/asset-compute-sdk#overview) para descargar el archivo de origen, orquestar el procesamiento de cada copia y cargar las copias resultantes de nuevo en el almacenamiento en la nube.
 
-El [`renditionCallback`](https://github.com/adobe/asset-compute-sdk#rendition-callback-for-worker-required) definido dentro del código de aplicación es donde se debe realizar toda la lógica de procesamiento de la aplicación. La llamada de retorno de representación de `worker-basic` simplemente copia el contenido del archivo de origen en el archivo de representación.
+El [`renditionCallback`](https://github.com/adobe/asset-compute-sdk#rendition-callback-for-worker-required) definido dentro del código de la aplicación es donde realizar toda la lógica de procesamiento de la aplicación. La devolución de llamada de copia en `worker-basic` simplemente copia el contenido del archivo de origen en el archivo de copia.
 
 ```javascript
 const { worker } = require('@adobe/asset-compute-sdk');
@@ -177,7 +178,7 @@ exports.main = worker(async (source, rendition) => {
 
 ## Llamar a una API externa {#call-external-api}
 
-En el código de la aplicación, puede realizar llamadas de API externas para ayudar con el procesamiento de la aplicación. A continuación encontrará un archivo de aplicación de ejemplo que invoca una API externa.
+En el código de la aplicación, puede realizar llamadas de API externas para ayudar con el procesamiento de la aplicación. A continuación se muestra un ejemplo de archivo de aplicación que invoca una API externa.
 
 ```javascript
 exports.main = worker(async function (source, rendition) {
@@ -189,9 +190,10 @@ exports.main = worker(async function (source, rendition) {
 });
 ```
 
-Por ejemplo, [`worker-animal-pictures`](https://github.com/adobe/asset-compute-example-workers/blob/master/projects/worker-animal-pictures/worker-animal-pictures.js#L46) realiza una solicitud de captura a una dirección URL estática desde Wikimedia usando la biblioteca [`node-httptransfer`](https://github.com/adobe/node-httptransfer#node-httptransfer).
+Por ejemplo, [`worker-animal-pictures`](https://github.com/adobe/asset-compute-example-workers/blob/master/projects/worker-animal-pictures/worker-animal-pictures.js#L46) realiza una solicitud de búsqueda en una dirección URL estática desde Wikimedia utilizando la biblioteca [`node-httptransfer`](https://github.com/adobe/node-httptransfer#node-httptransfer).
 
-<!-- TBD: Revisit later to see if this note is required.
+<!-- 
+TBD: Revisit later to see if this note is required.
 >[!NOTE]
 >
 >For extra authorization for these API calls, see [custom authorization checks](#custom-authorization-checks).
@@ -230,7 +232,8 @@ De forma predeterminada, las aplicaciones personalizadas de Asset Compute incluy
 
 ### Acceso a otras API de Adobe {#access-adobe-apis}
 
-<!-- TBD: Revisit this section. Where do we document console workspace creation?
+<!-- 
+TBD: Revisit this section. Where do we document console workspace creation?
 -->
 
 Agregue los servicios API al área de trabajo de la consola [!DNL Asset Compute] creada durante la instalación. Estos servicios forman parte del token de acceso JWT generado por [!DNL Asset Compute Service]. Se puede acceder al token y a otras credenciales dentro del objeto de acción `params` de la aplicación.

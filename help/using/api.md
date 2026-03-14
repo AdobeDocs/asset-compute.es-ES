@@ -1,17 +1,17 @@
 ---
-title: "[!DNL Asset Compute Service] API HTTP"
-description: "[!DNL Asset Compute Service] API HTTP para crear aplicaciones personalizadas."
+title: API del HTTP [!DNL Asset Compute Service]
+description: '[!DNL Asset Compute Service] API HTTP para crear aplicaciones personalizadas.'
 exl-id: 4b63fdf9-9c0d-4af7-839d-a95e07509750
-source-git-commit: f15b9819d3319d22deccdf7e39c0f72728baaa39
+source-git-commit: aed361a577fc53caec4118e417b1c0c814617b51
 workflow-type: tm+mt
-source-wordcount: '2862'
-ht-degree: 2%
+source-wordcount: '2995'
+ht-degree: 4%
 
 ---
 
-# API HTTP [!DNL Asset Compute Service] {#asset-compute-http-api}
+# API del HTTP [!DNL Asset Compute Service] {#asset-compute-http-api}
 
-El uso de la API se limita a fines de desarrollo. La API se proporciona como contexto al desarrollar aplicaciones personalizadas. [!DNL Adobe Experience Manager] as a [!DNL Cloud Service] usa la API para pasar la información de procesamiento a una aplicación personalizada. Para obtener más información, consulte [Usar microservicios de recursos y Perfiles de procesamiento](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
+El uso de la API se limita a fines de desarrollo. La API se proporciona como contexto al desarrollar aplicaciones personalizadas. [!DNL Adobe Experience Manager] as a [!DNL Cloud Service] utiliza la API para pasar la información de procesamiento a una aplicación personalizada. Para obtener más información, consulte [Usar microservicios de recursos y Perfiles de procesamiento](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
 
 >[!NOTE]
 >
@@ -37,7 +37,8 @@ Todas las API requieren autenticación de token de acceso. Las solicitudes deben
 
 1. `Authorization` encabezado con token de portador, que es el token de cuenta técnica, recibido a través de [intercambio JWT](https://developer.adobe.com/developer-console/docs/guides/) desde el proyecto Adobe Developer Console. Los [ámbitos](#scopes) se documentan a continuación.
 
-<!-- TBD: Change the existing URL to a new path when a new path for docs is available. The current path contains master word that is not an inclusive term. Logged ticket in Adobe I/O's GitHub repo to get a new URL.
+<!-- 
+TBD: Change the existing URL to a new path when a new path for docs is available. The current path contains master word that is not an inclusive term. Logged ticket in Adobe I/O's GitHub repo to get a new URL.
 -->
 
 1. Encabezado `x-gw-ims-org-id` con ID de organización de IMS.
@@ -63,7 +64,7 @@ Estos ámbitos requieren que el proyecto [!DNL Adobe Developer Console] se suscr
 * Básica
    * ámbitos: `openid,AdobeID`
 
-* Asset compute
+* Asset Compute
    * metascope: `asset_compute_meta`
    * ámbitos: `asset_compute,read_organizations`
 
@@ -208,7 +209,7 @@ Los códigos de estado son:
 
 La operación `process` envía un trabajo que transforma un recurso de origen en varias representaciones, según las instrucciones de la solicitud. Las notificaciones sobre la finalización correcta (tipo de evento `rendition_created`) o cualquier error (tipo de evento `rendition_failed`) se envían a un diario de eventos que debe recuperarse mediante [`/register`](#register) una vez antes de realizar cualquier número de `/process` solicitudes. Las solicitudes formadas incorrectamente generan un error 400.
 
-Se hace referencia a los binarios mediante direcciones URL, como URL prefirmadas de Amazon AWS S3 o URL de SAS de almacenamiento de Azure Blob. Se usa tanto para leer el recurso `source` (`GET` direcciones URL) como para escribir las representaciones (`PUT` direcciones URL). El cliente es responsable de generar estas direcciones URL prefirmadas.
+Se hace referencia a los binarios mediante direcciones URL, como direcciones URL prefirmadas de Amazon AWS S3 o direcciones URL SAS de almacenamiento de Azure Blob. Se usa tanto para leer el recurso `source` (`GET` direcciones URL) como para escribir las representaciones (`PUT` direcciones URL). El cliente es responsable de generar estas direcciones URL prefirmadas.
 
 | Parámetro | Valor |
 |--------------------------|------------------------------------------------------|
@@ -344,24 +345,24 @@ Códigos de estado:
 
 Es probable que la mayoría de los clientes prefieran reintentar la misma solicitud con [retroceso exponencial](https://en.wikipedia.org/wiki/Exponential_backoff) en cualquier error *excepto* problemas de configuración como 401 o 403, o solicitudes no válidas como 400. Aparte de la limitación regular de la velocidad mediante respuestas 429, una interrupción temporal del servicio o una limitación podría provocar errores 5xx. Entonces, sería aconsejable volver a intentarlo después de un periodo de tiempo.
 
-Todas las respuestas JSON (si están presentes) incluyen `requestId`, que es el mismo valor que el encabezado `X-Request-Id`. El Adobe recomienda leer del encabezado porque siempre está presente. El `requestId` también se devuelve en todos los eventos relacionados con el procesamiento de solicitudes como `requestId`. Los clientes no deben suponer el formato de esta cadena. Es un identificador de cadena opaco.
+Todas las respuestas JSON (si están presentes) incluyen `requestId`, que es el mismo valor que el encabezado `X-Request-Id`. Adobe recomienda leer del encabezado porque siempre está presente. El `requestId` también se devuelve en todos los eventos relacionados con el procesamiento de solicitudes como `requestId`. Los clientes no deben suponer el formato de esta cadena. Es un identificador de cadena opaco.
 
 ## Inclusión en el posprocesamiento {#opt-in-to-post-processing}
 
-El [SDK de Asset compute](https://github.com/adobe/asset-compute-sdk) admite un conjunto de opciones básicas de procesamiento posterior de imágenes. Los trabajadores personalizados pueden incluirse explícitamente en el posprocesamiento estableciendo el campo `postProcess` en el objeto de representación en `true`.
+[Asset Compute SDK](https://github.com/adobe/asset-compute-sdk) admite un conjunto de opciones básicas de procesamiento posterior de imágenes. Los trabajadores personalizados pueden incluirse explícitamente en el posprocesamiento estableciendo el campo `postProcess` en el objeto de representación en `true`.
 
 Los casos de uso admitidos son:
 
 * Recortar es una representación en un rectángulo cuyos límites están definidos por crop.w, crop.h, crop.x y crop.y. Los detalles de recorte se especifican en el campo `instructions.crop` del objeto de representación.
 * Cambie el tamaño de las imágenes mediante los valores de anchura, altura o ambos. `instructions.width` y `instructions.height` lo definen en el objeto de representación. Para cambiar el tamaño sólo con anchura o altura, defina sólo un valor. Compute Service conserva la relación de aspecto.
-* Establezca la calidad de una imagen JPEG. `instructions.quality` lo define en el objeto de representación. Un nivel de calidad de 100 representa la calidad más alta, mientras que números más bajos significan una disminución en la calidad.
+* Establezca la calidad de una imagen de JPEG. `instructions.quality` lo define en el objeto de representación. Un nivel de calidad de 100 representa la calidad más alta, mientras que números más bajos significan una disminución en la calidad.
 * Cree imágenes entrelazadas. `instructions.interlace` lo define en el objeto de representación.
 * Establezca PPP para ajustar el tamaño procesado para la publicación en el escritorio ajustando la escala aplicada a los píxeles. El `instructions.dpi` lo define en el objeto de representación para cambiar la resolución de los ppp. Sin embargo, para cambiar el tamaño de la imagen de modo que tenga el mismo tamaño con una resolución diferente, siga las instrucciones de `convertToDpi`.
 * Cambie el tamaño de la imagen de modo que la anchura o altura procesadas sean las mismas que las originales con la resolución de destino especificada (PPP). `instructions.convertToDpi` lo define en el objeto de representación.
 
 ## Recursos de marca de agua {#add-watermark}
 
-El [SDK de Asset compute](https://github.com/adobe/asset-compute-sdk) admite la adición de una marca de agua a los archivos de imagen PNG, JPEG, TIFF y GIF. La marca de agua se agrega siguiendo las instrucciones de representación del objeto `watermark` de la representación.
+[Asset Compute SDK](https://github.com/adobe/asset-compute-sdk) admite la adición de una marca de agua a los archivos de imagen PNG, JPEG, TIFF y GIF. La marca de agua se agrega siguiendo las instrucciones de representación del objeto `watermark` de la representación.
 
 La marca de agua se realiza durante el procesamiento posterior de la representación. Para marcar los recursos, el trabajador personalizado [opta por el posprocesamiento](#opt-in-to-post-processing) al establecer el campo `postProcess` en el objeto de representación en `true`. Si el trabajador no selecciona, la marca de agua no se aplica, incluso si el objeto de marca de agua está establecido en el objeto de representación de la solicitud.
 
@@ -373,45 +374,45 @@ Las siguientes son las opciones disponibles para la matriz `renditions` en [`/pr
 
 | Nombre | Tipo | Descripción | Ejemplos |
 |-------------------|----------|-------------|---------|
-| `fmt` | `string` | XMP El formato de destino de las representaciones también puede ser `text` para la extracción de texto y `xmp` para la extracción de metadatos de como xml. Ver [formatos compatibles](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/file-format-support) | `png` |
+| `fmt` | `string` | El formato de destino de las representaciones también puede ser `text` para la extracción de texto y `xmp` para la extracción de metadatos de XMP como xml. Ver [formatos compatibles](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support) | `png` |
 | `worker` | `string` | URL de [aplicación personalizada](develop-custom-application.md). Debe ser una dirección URL `https://`. Si este campo está presente, una aplicación personalizada crea la representación. A continuación, se utiliza cualquier otro campo de representación definido en la aplicación personalizada. | `"https://1234.adobeioruntime.net`<br>`/api/v1/web`<br>`/example-custom-worker-master/worker"` |
-| `target` | `string` | Dirección URL a la que se debe cargar la representación generada mediante el PUT HTTP. | `http://w.com/img.jpg` |
-| `target` | `object` | Información de carga de URL firmada previamente de varias partes para la representación generada. AEM Esta información es para [/ Carga binaria directa de Oak](https://jackrabbit.apache.org/oak/docs/features/direct-binary-access.html) con este [comportamiento de carga multiparte](https://jackrabbit.apache.org/oak/docs/apidocs/org/apache/jackrabbit/api/binary/BinaryUpload.html).<br>Campos:<ul><li>`urls`: matriz de cadenas, una para cada URL de parte firmada previamente</li><li>`minPartSize`: el tamaño mínimo que se va a usar para una parte = url</li><li>`maxPartSize`: el tamaño máximo que se va a usar para una parte = url</li></ul> | `{ "urls": [ "https://part1...", "https://part2..." ], "minPartSize": 10000, "maxPartSize": 100000 }` |
+| `target` | `string` | Dirección URL a la que se debe cargar la representación generada mediante HTTP PUT. | `http://w.com/img.jpg` |
+| `target` | `object` | Información de carga de URL firmada previamente de varias partes para la representación generada. Esta información es para [Carga binaria directa de AEM/Oak](https://jackrabbit.apache.org/oak/docs/features/direct-binary-access.html) con este [comportamiento de carga multiparte](https://jackrabbit.apache.org/oak/docs/apidocs/org/apache/jackrabbit/api/binary/BinaryUpload.html).<br>Campos:<ul><li>`urls`: matriz de cadenas, una para cada URL de parte firmada previamente</li><li>`minPartSize`: el tamaño mínimo que se va a usar para una parte = url</li><li>`maxPartSize`: el tamaño máximo que se va a usar para una parte = url</li></ul> | `{ "urls": [ "https://part1...", "https://part2..." ], "minPartSize": 10000, "maxPartSize": 100000 }` |
 | `userData` | `object` | Opcional. El cliente controla el espacio reservado y lo pasa tal cual a los eventos de representación. Permite que un cliente agregue información personalizada para identificar eventos de representación. No se debe modificar ni confiar en él en las aplicaciones personalizadas, ya que los clientes pueden cambiarlo en cualquier momento. | `{ ... }` |
 
 ### Campos específicos de representación {#rendition-specific-fields}
 
-Para obtener una lista de los formatos de archivo admitidos actualmente, consulte [formatos de archivo admitidos](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/file-format-support).
+Para obtener una lista de los formatos de archivo admitidos actualmente, consulte [formatos de archivo admitidos](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support).
 
 | Nombre | Tipo | Descripción | Ejemplos |
 |-------------------|----------|-------------|---------|
-| `*` | `*` | Se pueden agregar campos personalizados avanzados que una [aplicación personalizada](develop-custom-application.md) comprenda. | |
+| `*` | `*` | Se pueden agregar campos personalizados avanzados que una [aplicación personalizada](develop-custom-application.md) entienda. | |
 | `embedBinaryLimit` | `number` en bytes | Cuando el tamaño de archivo de la representación es menor que el valor especificado, se incluye en el evento enviado una vez finalizada su creación. El tamaño máximo permitido para la incrustación es de 32 KB (32 x 1024 bytes). Si el tamaño de una representación es mayor que el límite de `embedBinaryLimit`, se coloca en una ubicación del almacenamiento en la nube y no está incrustada en el evento. | `3276` |
 | `width` | `number` | Anchura en píxeles. solo para representaciones de imágenes. | `200` |
 | `height` | `number` | Altura en píxeles. solo para representaciones de imágenes. | `200` |
-|                   |          | La relación de aspecto se mantiene siempre si: <ul> <li> Se especificaron `width` y `height`, y la imagen se ajustará al tamaño sin perder la relación de aspecto </li><li> Si solo se especifica `width` o `height`, la imagen resultante utilizará la dimensión correspondiente y mantendrá la relación de aspecto</li><li> Si no se especifica `width` o `height`, se utilizará el tamaño de píxel de la imagen original. Depende del tipo de origen. En algunos formatos, como los archivos de PDF, se utiliza un tamaño predeterminado. Puede haber un límite de tamaño máximo.</li></ul> | |
+|                   |          | La relación de aspecto se mantiene siempre si: <ul> <li> Se han especificado `width` y `height`, y la imagen se ajusta al tamaño manteniendo la relación de aspecto </li><li> Si solo se especifica `width` o `height`, la imagen resultante utilizará la dimensión correspondiente y mantendrá la relación de aspecto</li><li> Si no se especifica `width` o `height`, se utiliza el tamaño de píxel de imagen original. Depende del tipo de origen. En algunos formatos, como los archivos PDF, se utiliza un tamaño predeterminado. Puede haber un límite de tamaño máximo.</li></ul> | |
 | `quality` | `number` | Especifique la calidad JPEG en el intervalo de `1` a `100`. Aplicable solo para representaciones de imágenes. | `90` |
-| `xmp` | `string` | XMP XMP Solo se utiliza para la reescritura de metadatos de la, se codifica en base64 para volver a escribir en la representación especificada. | |
-| `interlace` | `bool` | Cree PNG entrelazado, GIF o JPEG progresivo al establecerlo en `true`. No afecta a otros formatos de archivo. | |
-| `jpegSize` | `number` | Tamaño aproximado del archivo del JPEG en bytes. Anula cualquier configuración de `quality`. No afecta a otros formatos. | |
-| `dpi` | `number` o `object` | Establezca los ppp x e y. Para simplificar, también se puede configurar en un solo número, que se utiliza tanto para x como para y. No tiene ningún efecto en la propia imagen. | `96` o `{ xdpi: 96, ydpi: 96 }` |
-| `convertToDpi` | `number` o `object` | Los ppp x e y vuelven a muestrear los valores manteniendo el tamaño físico. Para simplificar, también se puede configurar en un solo número, que se utiliza tanto para x como para y. | `96` o `{ xdpi: 96, ydpi: 96 }` |
-| `files` | `array` | Lista de archivos para incluir en el archivo ZIP (`fmt=zip`). Cada entrada puede ser una cadena URL o un objeto con los campos:<ul><li>`url`: URL para descargar el archivo</li><li>`path`: almacena el archivo en esta ruta de acceso en el ZIP</li></ul> | `[{ "url": "https://host/asset.jpg", "path": "folder/location/asset.jpg" }]` |
-| `duplicate` | `string` | Administración de duplicados para los archivos ZIP (`fmt=zip`). De forma predeterminada, varios archivos almacenados en la misma ruta en el ZIP generan un error. Si se establece `duplicate` en `ignore`, solo se almacenará el primer recurso y se omitirá el resto. | `ignore` |
-| `watermark` | `object` | Contiene instrucciones acerca de [watermark](#watermark-specific-fields). |  |
+| `xmp` | `string` | Solo lo utiliza la reescritura de metadatos de XMP, es un XMP codificado en Base64 para volver a escribir en la representación especificada. | |
+| `interlace` | `bool` | Cree PNG, GIF o JPEG progresivo entrelazado configurándolo en `true`. No afecta a otros formatos de archivo. | |
+| `jpegSize` | `number` | Tamaño aproximado del archivo de JPEG en bytes. Reemplaza cualquier configuración de `quality`. No afecta a otros formatos. | |
+| `dpi` | `number` o `object` | Defina los ppp x e y. Para simplificar, también se puede establecer en un solo número, que se utiliza tanto para x como para y. No tiene ningún efecto en la propia imagen. | `96` o `{ xdpi: 96, ydpi: 96 }` |
+| `convertToDpi` | `number` o `object` | Los valores de x e y ppp vuelven a muestrearse mientras se mantiene el tamaño físico. Para simplificar, también se puede establecer en un solo número, que se utiliza tanto para x como para y. | `96` o `{ xdpi: 96, ydpi: 96 }` |
+| `files` | `array` | Lista de archivos para incluir en el archivo ZIP (`fmt=zip`). Cada entrada puede ser una cadena URL o un objeto con los campos:<ul><li>`url`: URL para descargar el archivo</li><li>`path`: Almacenar el archivo en esta ruta en el ZIP</li></ul> | `[{ "url": "https://host/asset.jpg", "path": "folder/location/asset.jpg" }]` |
+| `duplicate` | `string` | Administración de duplicados para archivos ZIP (`fmt=zip`). De forma predeterminada, varios archivos almacenados en la misma ruta en el ZIP generan un error. Si se establece `duplicate` en `ignore`, solo se almacenará el primer recurso y se omitirá el resto. | `ignore` |
+| `watermark` | `object` | Contiene instrucciones sobre la [marca de agua](#watermark-specific-fields). |  |
 
-### Campos específicos de marcas de agua {#watermark-specific-fields}
+### Campos específicos de marca de agua {#watermark-specific-fields}
 
 El formato PNG se utiliza como marca de agua.
 
 | Nombre | Tipo | Descripción | Ejemplos |
 |-------------------|----------|-------------|---------|
 | `scale` | `number` | Escala de la marca de agua, entre `0.0` y `1.0`. `1.0` significa que la marca de agua tiene su escala original (1:1) y los valores inferiores reducen el tamaño de la marca de agua. | Un valor de `0.5` significa la mitad del tamaño original. |
-| `image` | `url` | URL del archivo PNG que se utilizará para la marca de agua. | |
+| `image` | `url` | Dirección URL del archivo PNG que se va a utilizar para la marca de agua. | |
 
 ## Eventos asíncronos {#asynchronous-events}
 
-Cuando finaliza el procesamiento de una representación o se produce un error, se envía un evento a un Adobe [!DNL `I/O Events Journal`]. Los clientes deben escuchar la dirección URL del diario proporcionada a través de [`/register`](#register). La respuesta del diario incluye una matriz `event` que consta de un objeto para cada evento, de los cuales el campo `event` incluye la carga útil del evento real.
+Cuando finaliza el procesamiento de una copia o cuando se produce un error, se envía un evento a un Adobe [!DNL `I/O Events Journal`]. Los clientes deben escuchar la dirección URL del diario proporcionada a través de [`/register`](#register). La respuesta del diario incluye una matriz `event` que consta de un objeto para cada evento, de los cuales el campo `event` incluye la carga útil del evento real.
 
 El tipo de Adobe [!DNL `I/O Events`] para todos los eventos de [!DNL Asset Compute Service] es `asset_compute`. El historial solo se suscribe automáticamente a este tipo de evento y no se requiere ningún otro filtro basado en el tipo de evento [!DNL Adobe Developer]. Los tipos de eventos específicos del servicio están disponibles en la propiedad `type` del evento.
 

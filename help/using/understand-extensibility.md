@@ -2,16 +2,16 @@
 title: Obtener información sobre la ampliación de  [!DNL Asset Compute Service]
 description: Cuándo y cómo ampliar la funcionalidad  [!DNL Asset Compute Service]  para realizar el procesamiento de recursos personalizado.
 exl-id: 3b903364-34cc-44d5-9a03-24a0102cf85d
-source-git-commit: 63f83ff33ac6cd090fac4f6db18000155f464643
+source-git-commit: aed361a577fc53caec4118e417b1c0c814617b51
 workflow-type: tm+mt
-source-wordcount: '229'
-ht-degree: 1%
+source-wordcount: '304'
+ht-degree: 13%
 
 ---
 
 # Introducción a la extensibilidad {#introduction-to-extensibilty}
 
-[Perfiles de procesamiento en [!DNL Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/asset-microservices-overview) satisfacen muchos requisitos de representación, como la conversión a formatos y el cambio de tamaño de imágenes. Los requisitos empresariales más complejos pueden necesitar una solución personalizada que se adapte a las necesidades de una organización. [!DNL Asset Compute Service] se puede ampliar creando aplicaciones personalizadas a partir de los perfiles de procesamiento de [!DNL Experience Manager]. Estas aplicaciones personalizadas atienden a [casos de uso admitidos](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
+[Perfiles de procesamiento en [!DNL Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/asset-microservices-overview) satisfacen muchos requisitos de representación, como la conversión a formatos y el cambio de tamaño de imágenes. Los requisitos empresariales más complejos pueden necesitar una solución personalizada que se adapte a las necesidades de una organización. [!DNL Asset Compute Service] se puede ampliar creando aplicaciones personalizadas a partir de perfiles de procesamiento en [!DNL Experience Manager]. Estas aplicaciones personalizadas atienden a [casos de uso admitidos](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
 
 >[!NOTE]
 >
@@ -30,7 +30,8 @@ Asegúrese de cumplir los siguientes requisitos previos:
 * Asegúrese de tener una función de desarrollador o permisos de administrador en la organización para el desarrollador.
 * Asegúrese de que Adobe [[!DNL aio-cli]](https://github.com/adobe/aio-cli) está instalado localmente.
 
-<!-- TBD for later:
+<!-- 
+TBD for later:
 
 * What all accesses and licenses are required?
 * What all permissions are required to create, debug, and deploy custom applications?

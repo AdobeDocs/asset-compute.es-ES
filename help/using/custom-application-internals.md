@@ -2,9 +2,9 @@
 title: Comprender el funcionamiento de una aplicación personalizada
 description: Trabajo interno de  [!DNL Asset Compute Service] aplicación personalizada para comprender cómo funciona.
 exl-id: a3ee6549-9411-4839-9eff-62947d8f0e42
-source-git-commit: f199cecfe4409e2370b30783f984062196dd807d
+source-git-commit: aed361a577fc53caec4118e417b1c0c814617b51
 workflow-type: tm+mt
-source-wordcount: '689'
+source-wordcount: '786'
 ht-degree: 0%
 
 ---
@@ -46,11 +46,11 @@ curl -X POST \
   -d "<RENDITION_JSON>
 ```
 
-El cliente es responsable de dar formato correcto a las representaciones con direcciones URL firmadas previamente. La biblioteca JavaScript [`@adobe/node-cloud-blobstore-wrapper`](https://github.com/adobe/node-cloud-blobstore-wrapper#presigned-urls) se puede usar en aplicaciones NodeJS para firmar previamente las direcciones URL. Actualmente, la biblioteca solo admite el almacenamiento de Azure Blob y los contenedores de AWS S3.
+El cliente es responsable de dar formato correcto a las representaciones con direcciones URL firmadas previamente. La biblioteca JavaScript [`@adobe/node-cloud-blobstore-wrapper`](https://github.com/adobe/node-cloud-blobstore-wrapper#presigned-urls) se puede usar en aplicaciones NodeJS para firmar previamente las direcciones URL. Actualmente, la biblioteca solo admite Contenedores de Azure Blob Storage y AWS S3.
 
-La solicitud de procesamiento devuelve un(a) `requestId` que se puede usar para sondear [!DNL Adobe I/O] eventos.
+La solicitud de procesamiento devuelve un `requestId` que se puede usar para sondear [!DNL Adobe I/O] eventos.
 
-A continuación encontrará un ejemplo de solicitud de procesamiento de aplicaciones personalizadas.
+A continuación se incluye una solicitud de procesamiento de aplicación personalizada de ejemplo.
 
 ```json
 {
@@ -68,15 +68,17 @@ A continuación encontrará un ejemplo de solicitud de procesamiento de aplicaci
 }
 ```
 
-[!DNL Asset Compute Service] envía las solicitudes de representación de aplicaciones personalizadas a la aplicación personalizada. Utiliza un POST HTTP para la URL de aplicación proporcionada, que es la URL de acción web segura de App Builder. Todas las solicitudes utilizan el protocolo HTTPS para maximizar la seguridad de los datos.
+[!DNL Asset Compute Service] envía las solicitudes de representación de aplicaciones personalizadas a la aplicación personalizada. Utiliza un POST HTTP para la dirección URL de la aplicación proporcionada, que es la dirección URL de la acción web segura de App Builder. Todas las solicitudes utilizan el protocolo HTTPS para maximizar la seguridad de los datos.
 
-El [SDK de Asset Compute](https://github.com/adobe/asset-compute-sdk#adobe-asset-compute-worker-sdk) utilizado por una aplicación personalizada administra la solicitud HTTP POST. También controla la descarga del origen, la carga de representaciones, el envío de Adobe [!DNL I/O Events] y la gestión de errores.
+El [SDK de Asset compute](https://github.com/adobe/asset-compute-sdk#adobe-asset-compute-worker-sdk) utilizado por una aplicación personalizada controla la solicitud del POST HTTP. También controla la descarga del origen, la carga de copias, el envío del Adobe [!DNL I/O Events] y el control de errores.
 
-<!-- TBD: Add the application diagram. -->
+<!-- 
+TBD: Add the application diagram. 
+-->
 
 ### Código de aplicación {#application-code}
 
-El código personalizado solo necesita proporcionar una llamada de retorno que tome el archivo de origen disponible localmente (`source.path`). `rendition.path` es la ubicación donde se colocará el resultado final de una solicitud de procesamiento de recursos. La aplicación personalizada usa la llamada de retorno para convertir los archivos de origen disponibles localmente en un archivo de representación con el nombre pasado (`rendition.path`). Una aplicación personalizada debe escribir en `rendition.path` para crear una representación:
+El código personalizado solo necesita proporcionar una devolución de llamada que tome el archivo de código fuente disponible localmente (`source.path`). `rendition.path` es la ubicación donde se coloca el resultado final de una solicitud de procesamiento de recursos. La aplicación personalizada utiliza la devolución de llamada para convertir los archivos de origen disponibles localmente en un archivo de copia utilizando el nombre pasado en (`rendition.path`). Una aplicación personalizada debe escribir en `rendition.path` para crear una copia:
 
 ```javascript
 const { worker } = require('@adobe/asset-compute-sdk');
@@ -96,17 +98,17 @@ exports.main = worker(async (source, rendition) => {
 
 ### Descargar archivos de origen {#download-source}
 
-Una aplicación personalizada solo trata los archivos locales. [Asset Compute SDK](https://github.com/adobe/asset-compute-sdk#adobe-asset-compute-worker-sdk) se encarga de la descarga del archivo de origen.
+Una aplicación personalizada solo trata de archivos locales. El [SDK de Asset compute](https://github.com/adobe/asset-compute-sdk#adobe-asset-compute-worker-sdk) administra la descarga del archivo de origen.
 
 ### Creación de representación {#rendition-creation}
 
-SDK llama a una función de devolución de llamada [rendition asincrónica](https://github.com/adobe/asset-compute-sdk#rendition-callback-for-worker-required) para cada representación.
+El SDK llama a una [función de devolución de llamada de representación](https://github.com/adobe/asset-compute-sdk#rendition-callback-for-worker-required) asincrónica para cada copia.
 
-La función de devolución de llamada tiene acceso a los objetos [source](https://github.com/adobe/asset-compute-sdk#source) y [rendition](https://github.com/adobe/asset-compute-sdk#rendition). `source.path` ya existe y es la ruta de acceso a la copia local del archivo de origen. `rendition.path` es la ruta de acceso donde se debe almacenar la representación procesada. A menos que se establezca el indicador [disableSourceDownload](https://github.com/adobe/asset-compute-sdk#worker-options-optional), la aplicación debe usar exactamente `rendition.path`. De lo contrario, SDK no puede localizar ni identificar el archivo de representación y falla.
+La función de devolución de llamada tiene acceso a los objetos [source](https://github.com/adobe/asset-compute-sdk#source) y [rendition](https://github.com/adobe/asset-compute-sdk#rendition). `source.path` ya existe y es la ruta de acceso a la copia local del archivo de origen. `rendition.path` es la ruta de acceso donde se debe almacenar la copia procesada. A menos que esté establecido el indicador [disableSourceDownload](https://github.com/adobe/asset-compute-sdk#worker-options-optional), la aplicación debe usar exactamente `rendition.path`. De lo contrario, el SDK no puede localizar ni identificar el archivo de copia y se produce un error.
 
-La simplificación excesiva del ejemplo se realiza para ilustrar y centrarse en la anatomía de una aplicación personalizada. La aplicación solo copia el archivo de origen en el destino de la representación.
+La simplificación excesiva del ejemplo se realiza para ilustrar la anatomía de una aplicación personalizada y centrarse en ella. La aplicación solo copia el archivo de origen en el destino de la copia.
 
-Para obtener más información sobre los parámetros de devolución de llamada de representación, consulte [API de Asset Compute SDK](https://github.com/adobe/asset-compute-sdk#api-details).
+Para obtener más información sobre los parámetros de devolución de llamada de copia, consulte [API SDK de Asset compute](https://github.com/adobe/asset-compute-sdk#api-details).
 
 ### Cargar representaciones {#upload-rendition}
 
@@ -142,7 +144,8 @@ await Promise.all(events.map(event => {
 
 Para obtener más información sobre cómo obtener eventos de diario, consulte Adobe [[!DNL I/O Events] API](https://developer.adobe.com/events/docs/guides/api/journaling-api#).
 
-<!-- TBD:
+<!-- 
+TBD:
 * Illustration of the controls/data flow.
 * Basic overview, in text and not code, of how an application works.
 -->

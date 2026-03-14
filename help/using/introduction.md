@@ -2,10 +2,10 @@
 title: Introducción a  [!DNL Asset Compute Service]
 description: '[!DNL Asset Compute Service] es un servicio de procesamiento de recursos nativo de la nube que reduce la complejidad y mejora la escalabilidad.'
 exl-id: f8c89f65-5a94-44f3-aaac-4612ae291101
-source-git-commit: 63f83ff33ac6cd090fac4f6db18000155f464643
+source-git-commit: aed361a577fc53caec4118e417b1c0c814617b51
 workflow-type: tm+mt
-source-wordcount: '278'
-ht-degree: 1%
+source-wordcount: '355'
+ht-degree: 12%
 
 ---
 
@@ -19,19 +19,20 @@ Los desarrolladores pueden añadir aplicaciones de recursos personalizadas (tamb
 
 >[!NOTE]
 >
->Actualmente, [!DNL Asset Compute Service] solo se puede usar a través de [!DNL Experience Manager] como [!DNL Cloud Service]. Los administradores crean perfiles de procesamiento que pueden llamar a [!DNL Asset Compute Service] para pasar recursos para su procesamiento. Ver [usar microservicios de recursos y perfiles de procesamiento](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
+>Actualmente, [!DNL Asset Compute Service] solo se puede usar a través de [!DNL Experience Manager] como [!DNL Cloud Service]. Los administradores crean perfiles de procesamiento que pueden llamar a [!DNL Asset Compute Service] para pasar recursos para su procesamiento. Ver [usar microservicios de recursos y perfiles de procesamiento](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
 
 ## Casos de uso admitidos de [!DNL Asset Compute Service] {#possible-use-cases-benefits}
 
 [!DNL Asset Compute Service] admite algunos casos de uso empresarial comunes, como el procesamiento básico de imágenes, las conversiones específicas de aplicaciones de Adobe y la creación de aplicaciones personalizadas que organizan requisitos empresariales complejos.
 
-Puede usar el servicio web [!DNL Asset Compute] para generar miniaturas para diferentes tipos de archivo y representaciones de imágenes de alta calidad para los [formatos de archivo compatibles](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/file-format-support). Ver [casos de uso admitidos mediante la configuración personalizada](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
+Puede usar el servicio web [!DNL Asset Compute] para generar miniaturas para diferentes tipos de archivo y representaciones de imágenes de alta calidad para los [formatos de archivo compatibles](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support). Ver [casos de uso admitidos mediante la configuración personalizada](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
 
 >[!NOTE]
 >
 >El servicio no proporciona almacenamiento de recursos. Los usuarios lo proporcionan y proporcionan referencias a ubicaciones de archivos de origen y representación en el almacenamiento en la nube.
 
-<!-- TBD: Should this be mentioned in the docs?
+<!-- 
+TBD: Should this be mentioned in the docs?
 
 |Asset Compute Service does not do this|Expectations from implementing client|
 |---|---|
@@ -44,11 +45,12 @@ Puede usar el servicio web [!DNL Asset Compute] para generar miniaturas para dif
 
 >[!MORELIKETHIS]
 >
->* [Información general sobre el procesamiento de recursos con microservicios de recursos en [!DNL Adobe Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/asset-microservices-overview).
+>* [Información general sobre el procesamiento de recursos con microservicios de recursos en [!DNL Adobe Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/asset-microservices-overview).
 >* [Documentación de Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/intro_and_overview/#).
->* [Formatos de archivo compatibles para el procesamiento](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/file-format-support).
+>* [Formatos de archivo compatibles para el procesamiento](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support).
 
-<!-- **TBD:**
+<!-- 
+**TBD:**
 * Clarify the service can only be used within AEM as Cloud Service. The docs provided as context for custom application developers. Not to be used as a standalone service.
   ** and API as that plays a role in custom applications (accepting standard params, invoking Nui itself in the future, etc. (this is an outlook))
 
