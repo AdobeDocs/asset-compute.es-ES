@@ -1,10 +1,16 @@
 ---
-source-git-commit: f04e3c2495905e81afd57834f1a18947f57e7d56
+source-git-commit: 2256249aff19c93beefc05a80ee84e062eeb5a05
 workflow-type: tm+mt
-source-wordcount: '6'
-ht-degree: 0%
+source-wordcount: '70'
+ht-degree: 5%
 
 ---
-# ARCHIVADO
+# Documentación del servicio de Adobe Asset Compute
 
-Este repositorio ha migrado a <https://github.com/Adobe-Enterprise-Docs/asset-compute.es-ES>
+Este repositorio de documentación es para [!DNL Adobe Asset Compute Service].
+
+Sus contribuciones a la documentación son bienvenidas. Consulte los siguientes recursos:
+
+* [contributing.md](contributing.md) Para obtener una descripción general de cómo contribuir a la documentación.
+* [guidelines.md](guidelines.md) Para obtener información general sobre lo que se espera en las contribuciones y cómo componer las contribuciones de documentación.
+* [code-of-conduct.md](code-of-conduct.md) Para obtener una descripción general de los estándares de comportamiento que Adobe espera al contribuir en este proyecto de documentación.
