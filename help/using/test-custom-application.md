@@ -2,9 +2,13 @@
 title: Probar y depurar  [!DNL Asset Compute Service] aplicación personalizada
 description: Probar y depurar  [!DNL Asset Compute Service] aplicación personalizada.
 exl-id: c2534904-0a07-465e-acea-3cb578d3bc08
-source-git-commit: aed361a577fc53caec4118e417b1c0c814617b51
+TQID: https://experienceleague.adobe.com/43OlMHlUxu78CbxOEaAXi7gN6pwYS3QqGgV44WDSyCc
+product_v2: id: d09181b5-a36a-43de-ba01-36641440bc43id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+feature_v2: id: da0dfbce-df02-4f8b-b32d-a4e3b1d05085
+role_v2: id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+source-git-commit: 2510f77fed8d0f0708e09f32d0b13a437d2ede4f
 workflow-type: tm+mt
-source-wordcount: '855'
+source-wordcount: 855
 ht-degree: 0%
 
 ---
@@ -205,10 +209,10 @@ Los pasos siguientes muestran cómo se puede depurar una aplicación personaliza
 
 1. Haga clic en **[!UICONTROL ejecutar]** en Devtool. Puede ver las acciones que se ejecutan en el editor de código de Visual Studio y los registros comienzan a mostrarse.
 
-1. Establezca un punto de interrupción en el código. Entonces corre de nuevo y debe golpear.
+1. Establezca un punto de interrupción en su código. Entonces corre de nuevo y debería golpear.
 
-Cualquier cambio de código se carga en tiempo real y se hace efectivo en cuanto se produce la siguiente activación.
+Los cambios de código se cargan en tiempo real y son efectivos en cuanto se produce la siguiente activación.
 
 >[!NOTE]
 >
->Hay dos activaciones presentes para cada solicitud en las aplicaciones personalizadas. La primera solicitud es una acción web que se llama a sí misma de forma asincrónica en el código SDK. La segunda activación es la que llega al código.
+>Hay dos activaciones presentes para cada solicitud en las aplicaciones personalizadas. La primera solicitud es una acción web que se llama a sí misma asincrónicamente en el código SDK. La segunda activación es la que se ejecuta en el código.

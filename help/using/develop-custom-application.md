@@ -2,9 +2,14 @@
 title: Desarrollar para  [!DNL Asset Compute Service]
 description: Cree aplicaciones personalizadas con  [!DNL Asset Compute Service].
 exl-id: a0c59752-564b-4bb6-9833-ab7c58a7f38e
-source-git-commit: aed361a577fc53caec4118e417b1c0c814617b51
+TQID: https://experienceleague.adobe.com/vxnV2d7jBpmAh3CxyP5pp3qrjPuV39J10uZ1CJMVByc
+product_v2: id: d09181b5-a36a-43de-ba01-36641440bc43id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+feature_v2: id: a01bfd36-4ab8-4bf8-9dc0-5b45b890552e
+role_v2: id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+topic_v2: id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
+source-git-commit: 2510f77fed8d0f0708e09f32d0b13a437d2ede4f
 workflow-type: tm+mt
-source-wordcount: '1722'
+source-wordcount: 1722
 ht-degree: 0%
 
 ---
@@ -147,24 +152,24 @@ Para ejecutar la aplicación en la herramienta para desarrolladores, utilice el 
 
 >[!NOTE]
 >
->No utilice el indicador `--local` con el comando `run`. No funciona con las aplicaciones personalizadas de [!DNL Asset Compute] y la herramienta de desarrollo de Assets computes. El servicio [!DNL Asset Compute] llama a las aplicaciones personalizadas y no puede tener acceso a las acciones que se ejecutan en los equipos locales del desarrollador.
+>No use el marcador `--local` con el comando `run`. No funciona con [!DNL Asset Compute] aplicaciones personalizadas ni con la herramienta para desarrolladores de Asset Compute. El servicio [!DNL Asset Compute] llama a las aplicaciones personalizadas y no puede tener acceso a las acciones que se ejecutan en los equipos locales del desarrollador.
 
-Vea [aquí](test-custom-application.md) cómo probar y depurar la aplicación. Cuando hayas terminado de desarrollar tu aplicación personalizada, [implementa tu aplicación personalizada](deploy-custom-application.md).
+Vea [aquí](test-custom-application.md) cómo probar y depurar su aplicación. Cuando haya terminado de desarrollar su aplicación personalizada, [implemente su aplicación personalizada](deploy-custom-application.md).
 
-## Pruebe la aplicación de ejemplo proporcionada por Adobe {#try-sample}
+## Pruebe la aplicación de ejemplo proporcionada por Adobe. {#try-sample}
 
 A continuación se muestran ejemplos de aplicaciones personalizadas:
 
 * [worker-basic](https://github.com/adobe/asset-compute-example-workers/tree/master/projects/worker-basic)
-* [worker-animal-pictures](https://github.com/adobe/asset-compute-example-workers/tree/master/projects/worker-animal-pictures)
+* [worker-animal-picture](https://github.com/adobe/asset-compute-example-workers/tree/master/projects/worker-animal-pictures)
 
 ### Aplicación personalizada de plantilla {#template-custom-application}
 
-[worker-basic](https://github.com/adobe/asset-compute-example-workers/tree/master/projects/worker-basic) es una aplicación de plantilla. Genera una copia simplemente copiando el archivo de origen. El contenido de esta aplicación es la plantilla recibida al elegir `Adobe Asset Compute` en la creación de la aplicación de audio.
+[worker-basic](https://github.com/adobe/asset-compute-example-workers/tree/master/projects/worker-basic) es una aplicación de plantilla. Genera una representación simplemente copiando el archivo de origen. El contenido de esta aplicación es la plantilla recibida al elegir `Adobe Asset Compute` en la creación de la aplicación AIO.
 
-El archivo de aplicación [`worker-basic.js`](https://github.com/adobe/asset-compute-example-workers/blob/master/projects/worker-basic/worker-basic.js) usa [`asset-compute-sdk`](https://github.com/adobe/asset-compute-sdk#overview) para descargar el archivo de origen, orquestar el procesamiento de cada copia y cargar las copias resultantes de nuevo en el almacenamiento en la nube.
+El archivo de aplicación [`worker-basic.js`](https://github.com/adobe/asset-compute-example-workers/blob/master/projects/worker-basic/worker-basic.js) usa [`asset-compute-sdk`](https://github.com/adobe/asset-compute-sdk#overview) para descargar el archivo de origen, organizar cada procesamiento de representación y cargar las representaciones resultantes de nuevo en el almacenamiento de la nube.
 
-El [`renditionCallback`](https://github.com/adobe/asset-compute-sdk#rendition-callback-for-worker-required) definido dentro del código de la aplicación es donde realizar toda la lógica de procesamiento de la aplicación. La devolución de llamada de copia en `worker-basic` simplemente copia el contenido del archivo de origen en el archivo de copia.
+El [`renditionCallback`](https://github.com/adobe/asset-compute-sdk#rendition-callback-for-worker-required) definido dentro del código de aplicación es donde se debe realizar toda la lógica de procesamiento de la aplicación. La llamada de retorno de representación de `worker-basic` simplemente copia el contenido del archivo de origen en el archivo de representación.
 
 ```javascript
 const { worker } = require('@adobe/asset-compute-sdk');
@@ -178,7 +183,7 @@ exports.main = worker(async (source, rendition) => {
 
 ## Llamar a una API externa {#call-external-api}
 
-En el código de la aplicación, puede realizar llamadas de API externas para ayudar con el procesamiento de la aplicación. A continuación se muestra un ejemplo de archivo de aplicación que invoca una API externa.
+En el código de la aplicación, puede realizar llamadas de API externas para ayudar con el procesamiento de la aplicación. A continuación encontrará un archivo de aplicación de ejemplo que invoca una API externa.
 
 ```javascript
 exports.main = worker(async function (source, rendition) {
@@ -190,7 +195,7 @@ exports.main = worker(async function (source, rendition) {
 });
 ```
 
-Por ejemplo, [`worker-animal-pictures`](https://github.com/adobe/asset-compute-example-workers/blob/master/projects/worker-animal-pictures/worker-animal-pictures.js#L46) realiza una solicitud de búsqueda en una dirección URL estática desde Wikimedia utilizando la biblioteca [`node-httptransfer`](https://github.com/adobe/node-httptransfer#node-httptransfer).
+Por ejemplo, [`worker-animal-pictures`](https://github.com/adobe/asset-compute-example-workers/blob/master/projects/worker-animal-pictures/worker-animal-pictures.js#L46) realiza una solicitud de captura a una dirección URL estática desde Wikimedia usando la biblioteca [`node-httptransfer`](https://github.com/adobe/node-httptransfer#node-httptransfer).
 
 <!-- 
 TBD: Revisit later to see if this note is required.
