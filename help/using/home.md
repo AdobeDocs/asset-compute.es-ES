@@ -3,9 +3,13 @@ title: Guía del usuario de [!DNL Adobe Asset Compute Service]
 description: Esta documentación cubre  [!DNL Asset Compute Service] tareas como introducción, cómo desarrollar, administrar, implementar y solucionar problemas de su código personalizado.
 exl-id: 5acf87d1-a391-4802-bfce-e367fc8564df
 TQID: https://experienceleague.adobe.com/pLoude239KQnS4no1oSFaNzfzlHFdXvprrBg-NMUI0g
-product_v2: id: d09181b5-a36a-43de-ba01-36641440bc43id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
-role_v2: id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
-topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+product_v2:
+  - id: d09181b5-a36a-43de-ba01-36641440bc43
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2:
+  - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
 source-git-commit: 2510f77fed8d0f0708e09f32d0b13a437d2ede4f
 workflow-type: tm+mt
 source-wordcount: 237
