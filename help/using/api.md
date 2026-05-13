@@ -2,16 +2,29 @@
 title: API del HTTP [!DNL Asset Compute Service]
 description: '[!DNL Asset Compute Service] API HTTP para crear aplicaciones personalizadas.'
 exl-id: 4b63fdf9-9c0d-4af7-839d-a95e07509750
-source-git-commit: aed361a577fc53caec4118e417b1c0c814617b51
+TQID: https://experienceleague.adobe.com/fewAzOtKA-XTmpv-6Q0mlqXpalMWva6GpHlJSW6wPog
+product_v2:
+  - id: d09181b5-a36a-43de-ba01-36641440bc43
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+feature_v2:
+  - id: a01bfd36-4ab8-4bf8-9dc0-5b45b890552e
+  - id: ae478996-b206-4712-9b0c-dc78a2644453
+  - id: da0dfbce-df02-4f8b-b32d-a4e3b1d05085
+  - id: e17747bc-9b7b-44e6-a443-f54229a02620
+role_v2:
+  - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 2510f77fed8d0f0708e09f32d0b13a437d2ede4f
 workflow-type: tm+mt
-source-wordcount: '2995'
+source-wordcount: 2995
 ht-degree: 4%
 
 ---
 
 # API del HTTP [!DNL Asset Compute Service] {#asset-compute-http-api}
 
-El uso de la API se limita a fines de desarrollo. La API se proporciona como contexto al desarrollar aplicaciones personalizadas. [!DNL Adobe Experience Manager] as a [!DNL Cloud Service] utiliza la API para pasar la información de procesamiento a una aplicación personalizada. Para obtener más información, consulte [Usar microservicios de recursos y Perfiles de procesamiento](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
+El uso de la API se limita a fines de desarrollo. La API se proporciona como contexto al desarrollar aplicaciones personalizadas. [!DNL Adobe Experience Manager] as a [!DNL Cloud Service] usa la API para pasar la información de procesamiento a una aplicación personalizada. Para obtener más información, consulte [Usar microservicios de recursos y Perfiles de procesamiento](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
 
 >[!NOTE]
 >
@@ -233,7 +246,7 @@ El cuerpo de la solicitud de `/process` es un objeto JSON con este esquema de al
 
 Los campos disponibles son:
 
-| Nombre | Tipo | Descripción | Ejemplos |
+| Nombre | Tipo | Descripción | Ejemplo |
 |--------------|----------|-------------|---------|
 | `source` | `string` | URL del recurso de origen que se procesa. Opcional, según el formato de representación solicitado (por ejemplo, `fmt=zip`). | `"http://example.com/image.jpg"` |
 | `source` | `object` | Descripción del recurso de origen que se procesa. Vea la descripción de [campos de objeto de Source](#source-object-fields) a continuación. Opcional en función del formato de representación solicitado (por ejemplo, `fmt=zip`). | `{"url": "http://example.com/image.jpg", "mimeType": "image/jpeg" }` |
@@ -253,7 +266,7 @@ Los campos disponibles son:
 
 ### Campos de objeto de Source {#source-object-fields}
 
-| Nombre | Tipo | Descripción | Ejemplos |
+| Nombre | Tipo | Descripción | Ejemplo |
 |-----------|----------|-------------|---------|
 | `url` | `string` | URL del recurso de origen que se va a procesar. Requerido. | `"http://example.com/image.jpg"` |
 | `name` | `string` | Nombre del archivo del recurso Source. Se puede usar una extensión de archivo en el nombre si no se detecta ningún tipo MIME. Tiene prioridad sobre el nombre de archivo especificado en la ruta de acceso URL. Además, tiene prioridad sobre el nombre de archivo en el encabezado `content-disposition` del recurso binario. El valor predeterminado es &quot;archivo&quot;. | `"image.jpg"` |
@@ -372,7 +385,7 @@ Las siguientes son las opciones disponibles para la matriz `renditions` en [`/pr
 
 ### Campos comunes {#common-fields}
 
-| Nombre | Tipo | Descripción | Ejemplos |
+| Nombre | Tipo | Descripción | Ejemplo |
 |-------------------|----------|-------------|---------|
 | `fmt` | `string` | El formato de destino de las representaciones también puede ser `text` para la extracción de texto y `xmp` para la extracción de metadatos de XMP como xml. Ver [formatos compatibles](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/file-format-support) | `png` |
 | `worker` | `string` | URL de [aplicación personalizada](develop-custom-application.md). Debe ser una dirección URL `https://`. Si este campo está presente, una aplicación personalizada crea la representación. A continuación, se utiliza cualquier otro campo de representación definido en la aplicación personalizada. | `"https://1234.adobeioruntime.net`<br>`/api/v1/web`<br>`/example-custom-worker-master/worker"` |
@@ -384,35 +397,35 @@ Las siguientes son las opciones disponibles para la matriz `renditions` en [`/pr
 
 Para obtener una lista de los formatos de archivo admitidos actualmente, consulte [formatos de archivo admitidos](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/file-format-support).
 
-| Nombre | Tipo | Descripción | Ejemplos |
+| Nombre | Tipo | Descripción | Ejemplo |
 |-------------------|----------|-------------|---------|
-| `*` | `*` | Se pueden agregar campos personalizados avanzados que una [aplicación personalizada](develop-custom-application.md) entienda. | |
+| `*` | `*` | Se pueden agregar campos personalizados avanzados que una [aplicación personalizada](develop-custom-application.md) comprenda. | |
 | `embedBinaryLimit` | `number` en bytes | Cuando el tamaño de archivo de la representación es menor que el valor especificado, se incluye en el evento enviado una vez finalizada su creación. El tamaño máximo permitido para la incrustación es de 32 KB (32 x 1024 bytes). Si el tamaño de una representación es mayor que el límite de `embedBinaryLimit`, se coloca en una ubicación del almacenamiento en la nube y no está incrustada en el evento. | `3276` |
 | `width` | `number` | Anchura en píxeles. solo para representaciones de imágenes. | `200` |
 | `height` | `number` | Altura en píxeles. solo para representaciones de imágenes. | `200` |
-|                   |          | La relación de aspecto se mantiene siempre si: <ul> <li> Se han especificado `width` y `height`, y la imagen se ajusta al tamaño manteniendo la relación de aspecto </li><li> Si solo se especifica `width` o `height`, la imagen resultante utilizará la dimensión correspondiente y mantendrá la relación de aspecto</li><li> Si no se especifica `width` o `height`, se utiliza el tamaño de píxel de imagen original. Depende del tipo de origen. En algunos formatos, como los archivos PDF, se utiliza un tamaño predeterminado. Puede haber un límite de tamaño máximo.</li></ul> | |
+|                   |          | La relación de aspecto se mantiene siempre si: <ul> <li> Se especificaron `width` y `height`, y la imagen se ajustará al tamaño sin perder la relación de aspecto </li><li> Si solo se especifica `width` o `height`, la imagen resultante utilizará la dimensión correspondiente y mantendrá la relación de aspecto</li><li> Si no se especifica `width` o `height`, se utilizará el tamaño de píxel de la imagen original. Depende del tipo de origen. En algunos formatos, como los archivos PDF, se utiliza un tamaño predeterminado. Puede haber un límite de tamaño máximo.</li></ul> | |
 | `quality` | `number` | Especifique la calidad JPEG en el intervalo de `1` a `100`. Aplicable solo para representaciones de imágenes. | `90` |
 | `xmp` | `string` | Solo lo utiliza la reescritura de metadatos de XMP, es un XMP codificado en Base64 para volver a escribir en la representación especificada. | |
-| `interlace` | `bool` | Cree PNG, GIF o JPEG progresivo entrelazado configurándolo en `true`. No afecta a otros formatos de archivo. | |
-| `jpegSize` | `number` | Tamaño aproximado del archivo de JPEG en bytes. Reemplaza cualquier configuración de `quality`. No afecta a otros formatos. | |
-| `dpi` | `number` o `object` | Defina los ppp x e y. Para simplificar, también se puede establecer en un solo número, que se utiliza tanto para x como para y. No tiene ningún efecto en la propia imagen. | `96` o `{ xdpi: 96, ydpi: 96 }` |
-| `convertToDpi` | `number` o `object` | Los valores de x e y ppp vuelven a muestrearse mientras se mantiene el tamaño físico. Para simplificar, también se puede establecer en un solo número, que se utiliza tanto para x como para y. | `96` o `{ xdpi: 96, ydpi: 96 }` |
-| `files` | `array` | Lista de archivos para incluir en el archivo ZIP (`fmt=zip`). Cada entrada puede ser una cadena URL o un objeto con los campos:<ul><li>`url`: URL para descargar el archivo</li><li>`path`: Almacenar el archivo en esta ruta en el ZIP</li></ul> | `[{ "url": "https://host/asset.jpg", "path": "folder/location/asset.jpg" }]` |
-| `duplicate` | `string` | Administración de duplicados para archivos ZIP (`fmt=zip`). De forma predeterminada, varios archivos almacenados en la misma ruta en el ZIP generan un error. Si se establece `duplicate` en `ignore`, solo se almacenará el primer recurso y se omitirá el resto. | `ignore` |
-| `watermark` | `object` | Contiene instrucciones sobre la [marca de agua](#watermark-specific-fields). |  |
+| `interlace` | `bool` | Cree PNG entrelazado, GIF o JPEG progresivo al establecerlo en `true`. No afecta a otros formatos de archivo. | |
+| `jpegSize` | `number` | Tamaño aproximado del archivo JPEG en bytes. Anula cualquier configuración de `quality`. No afecta a otros formatos. | |
+| `dpi` | `number` o `object` | Establezca los ppp x e y. Para simplificar, también se puede configurar en un solo número, que se utiliza tanto para x como para y. No tiene ningún efecto en la propia imagen. | `96` o `{ xdpi: 96, ydpi: 96 }` |
+| `convertToDpi` | `number` o `object` | Los ppp x e y vuelven a muestrear los valores manteniendo el tamaño físico. Para simplificar, también se puede configurar en un solo número, que se utiliza tanto para x como para y. | `96` o `{ xdpi: 96, ydpi: 96 }` |
+| `files` | `array` | Lista de archivos para incluir en el archivo ZIP (`fmt=zip`). Cada entrada puede ser una cadena URL o un objeto con los campos:<ul><li>`url`: URL para descargar el archivo</li><li>`path`: almacena el archivo en esta ruta de acceso en el ZIP</li></ul> | `[{ "url": "https://host/asset.jpg", "path": "folder/location/asset.jpg" }]` |
+| `duplicate` | `string` | Administración de duplicados para los archivos ZIP (`fmt=zip`). De forma predeterminada, varios archivos almacenados en la misma ruta en el ZIP generan un error. Si se establece `duplicate` en `ignore`, solo se almacenará el primer recurso y se omitirá el resto. | `ignore` |
+| `watermark` | `object` | Contiene instrucciones acerca de [watermark](#watermark-specific-fields). |  |
 
-### Campos específicos de marca de agua {#watermark-specific-fields}
+### Campos específicos de marcas de agua {#watermark-specific-fields}
 
 El formato PNG se utiliza como marca de agua.
 
-| Nombre | Tipo | Descripción | Ejemplos |
+| Nombre | Tipo | Descripción | Ejemplo |
 |-------------------|----------|-------------|---------|
 | `scale` | `number` | Escala de la marca de agua, entre `0.0` y `1.0`. `1.0` significa que la marca de agua tiene su escala original (1:1) y los valores inferiores reducen el tamaño de la marca de agua. | Un valor de `0.5` significa la mitad del tamaño original. |
-| `image` | `url` | Dirección URL del archivo PNG que se va a utilizar para la marca de agua. | |
+| `image` | `url` | URL del archivo PNG que se utilizará para la marca de agua. | |
 
 ## Eventos asíncronos {#asynchronous-events}
 
-Cuando finaliza el procesamiento de una copia o cuando se produce un error, se envía un evento a un Adobe [!DNL `I/O Events Journal`]. Los clientes deben escuchar la dirección URL del diario proporcionada a través de [`/register`](#register). La respuesta del diario incluye una matriz `event` que consta de un objeto para cada evento, de los cuales el campo `event` incluye la carga útil del evento real.
+Cuando finaliza el procesamiento de una representación o se produce un error, se envía un evento a un Adobe [!DNL `I/O Events Journal`]. Los clientes deben escuchar la dirección URL del diario proporcionada a través de [`/register`](#register). La respuesta del diario incluye una matriz `event` que consta de un objeto para cada evento, de los cuales el campo `event` incluye la carga útil del evento real.
 
 El tipo de Adobe [!DNL `I/O Events`] para todos los eventos de [!DNL Asset Compute Service] es `asset_compute`. El historial solo se suscribe automáticamente a este tipo de evento y no se requiere ningún otro filtro basado en el tipo de evento [!DNL Adobe Developer]. Los tipos de eventos específicos del servicio están disponibles en la propiedad `type` del evento.
 
