@@ -246,7 +246,7 @@ El cuerpo de la solicitud de `/process` es un objeto JSON con este esquema de al
 
 Los campos disponibles son:
 
-| Nombre | Tipo | Descripción | Ejemplo |
+| Nombre | Tipo | Descripción | Ejemplos |
 |--------------|----------|-------------|---------|
 | `source` | `string` | URL del recurso de origen que se procesa. Opcional, según el formato de representación solicitado (por ejemplo, `fmt=zip`). | `"http://example.com/image.jpg"` |
 | `source` | `object` | Descripción del recurso de origen que se procesa. Vea la descripción de [campos de objeto de Source](#source-object-fields) a continuación. Opcional en función del formato de representación solicitado (por ejemplo, `fmt=zip`). | `{"url": "http://example.com/image.jpg", "mimeType": "image/jpeg" }` |
@@ -266,7 +266,7 @@ Los campos disponibles son:
 
 ### Campos de objeto de Source {#source-object-fields}
 
-| Nombre | Tipo | Descripción | Ejemplo |
+| Nombre | Tipo | Descripción | Ejemplos |
 |-----------|----------|-------------|---------|
 | `url` | `string` | URL del recurso de origen que se va a procesar. Requerido. | `"http://example.com/image.jpg"` |
 | `name` | `string` | Nombre del archivo del recurso Source. Se puede usar una extensión de archivo en el nombre si no se detecta ningún tipo MIME. Tiene prioridad sobre el nombre de archivo especificado en la ruta de acceso URL. Además, tiene prioridad sobre el nombre de archivo en el encabezado `content-disposition` del recurso binario. El valor predeterminado es &quot;archivo&quot;. | `"image.jpg"` |
@@ -385,7 +385,7 @@ Las siguientes son las opciones disponibles para la matriz `renditions` en [`/pr
 
 ### Campos comunes {#common-fields}
 
-| Nombre | Tipo | Descripción | Ejemplo |
+| Nombre | Tipo | Descripción | Ejemplos |
 |-------------------|----------|-------------|---------|
 | `fmt` | `string` | El formato de destino de las representaciones también puede ser `text` para la extracción de texto y `xmp` para la extracción de metadatos de XMP como xml. Ver [formatos compatibles](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/file-format-support) | `png` |
 | `worker` | `string` | URL de [aplicación personalizada](develop-custom-application.md). Debe ser una dirección URL `https://`. Si este campo está presente, una aplicación personalizada crea la representación. A continuación, se utiliza cualquier otro campo de representación definido en la aplicación personalizada. | `"https://1234.adobeioruntime.net`<br>`/api/v1/web`<br>`/example-custom-worker-master/worker"` |
@@ -397,7 +397,7 @@ Las siguientes son las opciones disponibles para la matriz `renditions` en [`/pr
 
 Para obtener una lista de los formatos de archivo admitidos actualmente, consulte [formatos de archivo admitidos](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/file-format-support).
 
-| Nombre | Tipo | Descripción | Ejemplo |
+| Nombre | Tipo | Descripción | Ejemplos |
 |-------------------|----------|-------------|---------|
 | `*` | `*` | Se pueden agregar campos personalizados avanzados que una [aplicación personalizada](develop-custom-application.md) comprenda. | |
 | `embedBinaryLimit` | `number` en bytes | Cuando el tamaño de archivo de la representación es menor que el valor especificado, se incluye en el evento enviado una vez finalizada su creación. El tamaño máximo permitido para la incrustación es de 32 KB (32 x 1024 bytes). Si el tamaño de una representación es mayor que el límite de `embedBinaryLimit`, se coloca en una ubicación del almacenamiento en la nube y no está incrustada en el evento. | `3276` |
@@ -418,7 +418,7 @@ Para obtener una lista de los formatos de archivo admitidos actualmente, consult
 
 El formato PNG se utiliza como marca de agua.
 
-| Nombre | Tipo | Descripción | Ejemplo |
+| Nombre | Tipo | Descripción | Ejemplos |
 |-------------------|----------|-------------|---------|
 | `scale` | `number` | Escala de la marca de agua, entre `0.0` y `1.0`. `1.0` significa que la marca de agua tiene su escala original (1:1) y los valores inferiores reducen el tamaño de la marca de agua. | Un valor de `0.5` significa la mitad del tamaño original. |
 | `image` | `url` | URL del archivo PNG que se utilizará para la marca de agua. | |
