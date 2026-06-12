@@ -3,18 +3,10 @@ title: API del HTTP [!DNL Asset Compute Service]
 description: '[!DNL Asset Compute Service] API HTTP para crear aplicaciones personalizadas.'
 exl-id: 4b63fdf9-9c0d-4af7-839d-a95e07509750
 TQID: https://experienceleague.adobe.com/fewAzOtKA-XTmpv-6Q0mlqXpalMWva6GpHlJSW6wPog
-product_v2:
-  - id: d09181b5-a36a-43de-ba01-36641440bc43
-  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
-feature_v2:
-  - id: a01bfd36-4ab8-4bf8-9dc0-5b45b890552e
-  - id: ae478996-b206-4712-9b0c-dc78a2644453
-  - id: da0dfbce-df02-4f8b-b32d-a4e3b1d05085
-  - id: e17747bc-9b7b-44e6-a443-f54229a02620
-role_v2:
-  - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+product_v2: id: d09181b5-a36a-43de-ba01-36641440bc43id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+feature_v2: id: a01bfd36-4ab8-4bf8-9dc0-5b45b890552eid: ae478996-b206-4712-9b0c-dc78a2644453id: da0dfbce-df02-4f8b-b32d-a4e3b1d05085id: e17747bc-9b7b-44e6-a443-f54229a02620
+role_v2: id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
 source-git-commit: 2510f77fed8d0f0708e09f32d0b13a437d2ede4f
 workflow-type: tm+mt
 source-wordcount: 2995
@@ -24,7 +16,7 @@ ht-degree: 4%
 
 # API del HTTP [!DNL Asset Compute Service] {#asset-compute-http-api}
 
-El uso de la API se limita a fines de desarrollo. La API se proporciona como contexto al desarrollar aplicaciones personalizadas. [!DNL Adobe Experience Manager] as a [!DNL Cloud Service] usa la API para pasar la información de procesamiento a una aplicación personalizada. Para obtener más información, consulte [Usar microservicios de recursos y Perfiles de procesamiento](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
+El uso de la API se limita a fines de desarrollo. La API se proporciona como contexto al desarrollar aplicaciones personalizadas. [!DNL Adobe Experience Manager] as a [!DNL Cloud Service] usa la API para pasar la información de procesamiento a una aplicación personalizada. Para obtener más información, consulte [Usar microservicios de recursos y Perfiles de procesamiento](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
 
 >[!NOTE]
 >
@@ -246,7 +238,7 @@ El cuerpo de la solicitud de `/process` es un objeto JSON con este esquema de al
 
 Los campos disponibles son:
 
-| Nombre | Tipo | Descripción | Ejemplo |
+| Nombre | Tipo | Descripción | Ejemplos |
 |--------------|----------|-------------|---------|
 | `source` | `string` | URL del recurso de origen que se procesa. Opcional, según el formato de representación solicitado (por ejemplo, `fmt=zip`). | `"http://example.com/image.jpg"` |
 | `source` | `object` | Descripción del recurso de origen que se procesa. Vea la descripción de [campos de objeto de Source](#source-object-fields) a continuación. Opcional en función del formato de representación solicitado (por ejemplo, `fmt=zip`). | `{"url": "http://example.com/image.jpg", "mimeType": "image/jpeg" }` |
@@ -266,7 +258,7 @@ Los campos disponibles son:
 
 ### Campos de objeto de Source {#source-object-fields}
 
-| Nombre | Tipo | Descripción | Ejemplo |
+| Nombre | Tipo | Descripción | Ejemplos |
 |-----------|----------|-------------|---------|
 | `url` | `string` | URL del recurso de origen que se va a procesar. Requerido. | `"http://example.com/image.jpg"` |
 | `name` | `string` | Nombre del archivo del recurso Source. Se puede usar una extensión de archivo en el nombre si no se detecta ningún tipo MIME. Tiene prioridad sobre el nombre de archivo especificado en la ruta de acceso URL. Además, tiene prioridad sobre el nombre de archivo en el encabezado `content-disposition` del recurso binario. El valor predeterminado es &quot;archivo&quot;. | `"image.jpg"` |
@@ -385,9 +377,9 @@ Las siguientes son las opciones disponibles para la matriz `renditions` en [`/pr
 
 ### Campos comunes {#common-fields}
 
-| Nombre | Tipo | Descripción | Ejemplo |
+| Nombre | Tipo | Descripción | Ejemplos |
 |-------------------|----------|-------------|---------|
-| `fmt` | `string` | El formato de destino de las representaciones también puede ser `text` para la extracción de texto y `xmp` para la extracción de metadatos de XMP como xml. Ver [formatos compatibles](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/file-format-support) | `png` |
+| `fmt` | `string` | El formato de destino de las representaciones también puede ser `text` para la extracción de texto y `xmp` para la extracción de metadatos de XMP como xml. Ver [formatos compatibles](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support) | `png` |
 | `worker` | `string` | URL de [aplicación personalizada](develop-custom-application.md). Debe ser una dirección URL `https://`. Si este campo está presente, una aplicación personalizada crea la representación. A continuación, se utiliza cualquier otro campo de representación definido en la aplicación personalizada. | `"https://1234.adobeioruntime.net`<br>`/api/v1/web`<br>`/example-custom-worker-master/worker"` |
 | `target` | `string` | Dirección URL a la que se debe cargar la representación generada mediante HTTP PUT. | `http://w.com/img.jpg` |
 | `target` | `object` | Información de carga de URL firmada previamente de varias partes para la representación generada. Esta información es para [Carga binaria directa de AEM/Oak](https://jackrabbit.apache.org/oak/docs/features/direct-binary-access.html) con este [comportamiento de carga multiparte](https://jackrabbit.apache.org/oak/docs/apidocs/org/apache/jackrabbit/api/binary/BinaryUpload.html).<br>Campos:<ul><li>`urls`: matriz de cadenas, una para cada URL de parte firmada previamente</li><li>`minPartSize`: el tamaño mínimo que se va a usar para una parte = url</li><li>`maxPartSize`: el tamaño máximo que se va a usar para una parte = url</li></ul> | `{ "urls": [ "https://part1...", "https://part2..." ], "minPartSize": 10000, "maxPartSize": 100000 }` |
@@ -395,9 +387,9 @@ Las siguientes son las opciones disponibles para la matriz `renditions` en [`/pr
 
 ### Campos específicos de representación {#rendition-specific-fields}
 
-Para obtener una lista de los formatos de archivo admitidos actualmente, consulte [formatos de archivo admitidos](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/assets/file-format-support).
+Para obtener una lista de los formatos de archivo admitidos actualmente, consulte [formatos de archivo admitidos](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support).
 
-| Nombre | Tipo | Descripción | Ejemplo |
+| Nombre | Tipo | Descripción | Ejemplos |
 |-------------------|----------|-------------|---------|
 | `*` | `*` | Se pueden agregar campos personalizados avanzados que una [aplicación personalizada](develop-custom-application.md) comprenda. | |
 | `embedBinaryLimit` | `number` en bytes | Cuando el tamaño de archivo de la representación es menor que el valor especificado, se incluye en el evento enviado una vez finalizada su creación. El tamaño máximo permitido para la incrustación es de 32 KB (32 x 1024 bytes). Si el tamaño de una representación es mayor que el límite de `embedBinaryLimit`, se coloca en una ubicación del almacenamiento en la nube y no está incrustada en el evento. | `3276` |
@@ -418,7 +410,7 @@ Para obtener una lista de los formatos de archivo admitidos actualmente, consult
 
 El formato PNG se utiliza como marca de agua.
 
-| Nombre | Tipo | Descripción | Ejemplo |
+| Nombre | Tipo | Descripción | Ejemplos |
 |-------------------|----------|-------------|---------|
 | `scale` | `number` | Escala de la marca de agua, entre `0.0` y `1.0`. `1.0` significa que la marca de agua tiene su escala original (1:1) y los valores inferiores reducen el tamaño de la marca de agua. | Un valor de `0.5` significa la mitad del tamaño original. |
 | `image` | `url` | URL del archivo PNG que se utilizará para la marca de agua. | |
