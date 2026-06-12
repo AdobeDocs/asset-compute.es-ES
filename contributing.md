@@ -58,5 +58,5 @@ Adobe está encantado de recibir cualquier contribución y revisa su contribuci�
 
 ## Información adicional
 
-Consulte la [Guía del colaborador de Adobe Docs](https://experienceleague.adobe.com/en/docs/contributor/contributor-guide/introduction) para obtener más información sobre cómo utilizar la plataforma de creación de GitHub.
+Consulte la [Guía del colaborador de Adobe Docs](https://experienceleague.adobe.com/es/docs/contributor/contributor-guide/introduction) para obtener más información sobre cómo utilizar la plataforma de creación de GitHub.
 
